@@ -1,0 +1,6 @@
+plugin:
+    name: 'paveltopilin.blog::lang.plugin.name'
+    description: 'paveltopilin.blog::lang.plugin.description'
+    author: 'Pavel Topilin'
+    icon: wn-icon-adn
+    replaces: {  }

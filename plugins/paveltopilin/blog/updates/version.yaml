@@ -1,0 +1,5 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table paveltopilin_blog_posts'
+    - builder_table_create_paveltopilin_blog_posts.php
