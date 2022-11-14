@@ -1,0 +1,13 @@
+fields:
+    Text:
+        label: 'paveltopilin.blog::lang.comment.text'
+        span: auto
+        size: ''
+        type: textarea
+tabs:
+    fields:
+        Author:
+            span: auto
+            path: ~/plugins/paveltopilin/blog/controllers/comments/_author.htm
+            type: partial
+            tab: Author

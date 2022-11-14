@@ -12,13 +12,15 @@ class Posts extends Controller
         'Backend\Behaviors\ListController',
         'Backend\Behaviors\FormController',
         'Backend\Behaviors\ReorderController',
-        \Backend\Behaviors\RelationController::class
+        \Backend\Behaviors\RelationController::class,
+        \Backend\Behaviors\ImportExportController::class
     ];
 
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
     public $reorderConfig = 'config_reorder.yaml';
     public $relationConfig = 'config_relation.yaml';
+    public $importExportConfig = 'config_import_export.yaml';
 
     public $requiredPermissions = [
         'paveltopilin.blog.manage_posts'

@@ -4,7 +4,6 @@ namespace PavelTopilin\Blog\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
-use PavelTopilin\Blog\Models\Post;
 
 class Tags extends Controller
 {

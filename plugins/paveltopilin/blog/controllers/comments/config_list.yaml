@@ -3,6 +3,7 @@ modelClass: PavelTopilin\Blog\Models\Comment
 list: $/paveltopilin/blog/models/comment/columns.yaml
 recordUrl: 'paveltopilin/blog/comments/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'
+filter: config_filter.yaml
 recordsPerPage: 20
 showSetup: true
 showCheckboxes: true

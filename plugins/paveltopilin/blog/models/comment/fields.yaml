@@ -4,7 +4,11 @@ fields:
         span: auto
         size: ''
         type: textarea
-    Author:
+    author:
+        label: Author
+        size: ''
         span: auto
-        path: ~/plugins/paveltopilin/blog/controllers/comments/_author.htm
-        type: partial
+        required: 1
+        nameFrom: email
+        type: relation
+        tab: Misc

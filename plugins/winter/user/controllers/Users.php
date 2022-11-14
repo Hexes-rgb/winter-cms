@@ -1,4 +1,6 @@
-<?php namespace Winter\User\Controllers;
+<?php
+
+namespace Winter\User\Controllers;
 
 use Auth;
 use Lang;
@@ -21,7 +23,8 @@ class Users extends Controller
      */
     public $implement = [
         \Backend\Behaviors\FormController::class,
-        \Backend\Behaviors\ListController::class
+        \Backend\Behaviors\ListController::class,
+        \Backend\Behaviors\RelationController::class
     ];
 
     /**
@@ -37,7 +40,7 @@ class Users extends Controller
     /**
      * @var array `RelationController` configuration, by extension.
      */
-    public $relationConfig;
+    public $relationConfig = 'config_relation.yaml';
 
     /**
      * @var array Permissions required to view this page.
@@ -129,7 +132,7 @@ class Users extends Controller
     {
         $model->block_mail = MailBlocker::isBlockAll($model);
 
-        $model->bindEvent('model.saveInternal', function() use ($model) {
+        $model->bindEvent('model.saveInternal', function () use ($model) {
             unset($model->attributes['block_mail']);
         });
     }
@@ -296,10 +299,9 @@ class Users extends Controller
                 }
             }
 
-            Flash::success(Lang::get('winter.user::lang.users.'.$bulkAction.'_selected_success'));
-        }
-        else {
-            Flash::error(Lang::get('winter.user::lang.users.'.$bulkAction.'_selected_empty'));
+            Flash::success(Lang::get('winter.user::lang.users.' . $bulkAction . '_selected_success'));
+        } else {
+            Flash::error(Lang::get('winter.user::lang.users.' . $bulkAction . '_selected_empty'));
         }
 
         return $this->listRefresh();

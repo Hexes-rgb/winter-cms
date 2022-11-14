@@ -93,3 +93,7 @@ secondaryTabs:
             mode: image
             imageHeight: 260
             imageWidth: 260
+        Posts:
+            span: auto
+            path: plugins/winter/user/controllers/users/_posts.htm
+            type: partial

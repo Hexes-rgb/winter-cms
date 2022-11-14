@@ -21,3 +21,18 @@
 1.0.8:
     - 'Created table paveltopilin_blog_post_tag'
     - builder_table_create_paveltopilin_blog_post_tag.php
+1.0.9:
+    - 'Updated table paveltopilin_blog_comments'
+    - builder_table_update_paveltopilin_blog_comments_4.php
+1.0.10:
+    - 'Created table paveltopilin_blog_subscriptions'
+    - builder_table_create_paveltopilin_blog_subscriptions.php
+1.0.11:
+    - 'Created table paveltopilin_blog_likes'
+    - builder_table_create_paveltopilin_blog_likes.php
+1.0.12:
+    - 'Updated table paveltopilin_blog_subscriptions'
+    - builder_table_update_paveltopilin_blog_subscriptions.php
+1.0.13:
+    - 'Created table paveltopilin_blog_views'
+    - builder_table_create_paveltopilin_blog_views.php

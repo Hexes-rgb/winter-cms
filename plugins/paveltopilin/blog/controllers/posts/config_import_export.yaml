@@ -1,0 +1,16 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: Import posts
+    modelClass: paveltopilin\Blog\Models\PostImport
+    list: $/paveltopilin/blog/models/post/columns.yaml
+
+export:
+    title: Export posts
+    modelClass: paveltopilin\Blog\Models\PostExport
+    list: $/paveltopilin/blog/models/post/columns.yaml
+
+# export:
+#     useList: true

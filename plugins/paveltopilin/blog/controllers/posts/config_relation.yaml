@@ -1,8 +1,17 @@
+author:
+    label: Author
+    manage:
+        form: $/winter/user/models/user/author_fields.yaml
+        list: $/winter/user/models/user/author_columns.yaml
+    view:
+        form: $/winter/user/models/user/author_fields.yaml
+        toolbarButtons: link
+
 tags:
     label: Tags
     view:
-        list: $/blog/models/tag/columns.yaml
+        list: $/paveltopilin/blog/models/tag/columns.yaml
     manage:
-        list: $/blog/models/tag/columns.yaml
+        list: $/paveltopilin/blog/models/tag/columns.yaml
     pivot:
-        form: $/blog/models/tag/fields.yaml
+        form: $/paveltopilin/blog/models/tag/fields.yaml

@@ -1,0 +1,8 @@
+posts:
+    label: Posts
+    manage:
+        form: $/paveltopilin/blog/models/post/post_fields.yaml
+        list: $/paveltopilin/blog/models/post/columns.yaml
+    view:
+        list: $/paveltopilin/blog/models/post/columns.yaml
+        toolbarButtons: create|delete

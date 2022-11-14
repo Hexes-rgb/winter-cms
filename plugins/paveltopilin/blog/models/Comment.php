@@ -2,9 +2,9 @@
 
 namespace PavelTopilin\Blog\Models;
 
-use Winter\User\Models\User;
-
 use Model;
+
+use Winter\User\Models\User;
 
 /**
  * Model
@@ -35,5 +35,9 @@ class Comment extends Model
 
     public $belongsTo = [
         'author' => [User::class, 'key' => 'user_id', 'otherKey' => 'id']
+    ];
+
+    public $hasMany = [
+        'comments' => [Comment::class, 'key' => 'id', 'otherKey' => 'comment_id']
     ];
 }

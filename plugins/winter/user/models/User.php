@@ -2,13 +2,16 @@
 
 namespace Winter\User\Models;
 
+// namespace Blog\Models;
+
 use Str;
 use Auth;
 use Mail;
 use Event;
 use Config;
 use Carbon\Carbon;
-use Blog\Models\Comment;
+use PavelTopilin\Blog\Models\Comment;
+use PavelTopilin\Blog\Models\Post;
 use Winter\Storm\Auth\AuthException;
 use Winter\Storm\Auth\Models\User as UserBase;
 use Winter\User\Models\Settings as UserSettings;
@@ -37,11 +40,17 @@ class User extends UserBase
      * @var array Relations
      */
     public $belongsToMany = [
-        'groups' => [UserGroup::class, 'table' => 'users_groups']
+        'groups' => [UserGroup::class, 'table' => 'users_groups'],
+        'viewedPosts' => [Post::class, 'table' => 'paveltopilin_blog_views'],
+        'likedPosts' => [Post::class, 'table' => 'paveltopilin_blog_likes'],
+        'subscriptions' => [User::class, 'key' => 'id', 'otherKey' => 'sub_id', 'table' => 'paveltopilin_blog_subscriptions'],
+        'subscribers' => [User::class, 'key' => 'id', 'otherKey' => 'author_id', 'table' => 'paveltopilin_blog_subscriptions']
+
     ];
 
     public $hasMany = [
-        'comments' => [Comment::class, 'key' => 'id', 'otherKey' => 'user_id']
+        'comments' => [Comment::class, 'key' => 'id', 'otherKey' => 'user_id'],
+        'posts' => [Post::class, 'key' => 'id', 'otherKey' => 'user_id']
     ];
 
     public $attachOne = [

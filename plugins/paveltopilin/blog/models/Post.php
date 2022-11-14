@@ -3,6 +3,7 @@
 namespace PavelTopilin\Blog\Models;
 
 use Model;
+use Winter\User\Models\User;
 use PavelTopilin\Blog\Models\Tag;
 
 /**
@@ -15,7 +16,7 @@ class Post extends Model
     use \Winter\Storm\Database\Traits\SoftDelete;
 
     protected $dates = ['deleted_at'];
-
+    protected $fillable = ['title', 'text', 'user_id'];
 
     /**
      * @var string The database table used by the model.
@@ -33,6 +34,10 @@ class Post extends Model
     public $jsonable = [];
 
     public $belongsToMany = [
-        'tags' => [Tag::class, 'key' => 'tag_id', 'otherKey' => 'post_id', 'table' => 'paveltopilin_blog_post_tag']
+        'tags' => [Tag::class, 'key' => 'tag_id', 'otherKey' => 'post_id', 'table' => 'paveltopilin_blog_post_tag'],
+        'viewes' => [User::class, 'table' => 'paveltopilin_blog_views']
+    ];
+    public $belongsTo = [
+        'author' => [User::class, 'key' => 'user_id', 'otherKey' => 'id']
     ];
 }

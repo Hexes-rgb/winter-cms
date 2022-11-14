@@ -6,3 +6,11 @@ author:
     view:
         form: $/winter/user/models/user/author_fields.yaml
         toolbarButtons: link
+comments:
+    label: Comments
+    manage:
+        form: $/paveltopilin/blog/models/comment/comment_fields.yaml
+        list: $/paveltopilin/blog/models/comment/columns.yaml
+    view:
+        list: $/paveltopilin/blog/models/comment/columns.yaml
+        toolbarButtons: create|delete
