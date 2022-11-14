@@ -3,3 +3,21 @@
 1.0.2:
     - 'Created table paveltopilin_blog_posts'
     - builder_table_create_paveltopilin_blog_posts.php
+1.0.3:
+    - 'Created table paveltopilin_blog_tags'
+    - builder_table_create_paveltopilin_blog_tags.php
+1.0.4:
+    - 'Created table paveltopilin_blog_comments'
+    - builder_table_create_paveltopilin_blog_comments.php
+1.0.5:
+    - 'Updated table paveltopilin_blog_comments'
+    - builder_table_update_paveltopilin_blog_comments.php
+1.0.6:
+    - 'Updated table paveltopilin_blog_comments'
+    - builder_table_update_paveltopilin_blog_comments_2.php
+1.0.7:
+    - 'Updated table paveltopilin_blog_comments'
+    - builder_table_update_paveltopilin_blog_comments_3.php
+1.0.8:
+    - 'Created table paveltopilin_blog_post_tag'
+    - builder_table_create_paveltopilin_blog_post_tag.php

@@ -1,0 +1,10 @@
+name: Comments
+form: $/paveltopilin/blog/models/comment/fields.yaml
+modelClass: PavelTopilin\Blog\Models\Comment
+defaultRedirect: paveltopilin/blog/comments
+create:
+    redirect: 'paveltopilin/blog/comments/update/:id'
+    redirectClose: paveltopilin/blog/comments
+update:
+    redirect: paveltopilin/blog/comments
+    redirectClose: paveltopilin/blog/comments

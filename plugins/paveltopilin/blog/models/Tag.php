@@ -3,12 +3,12 @@
 namespace PavelTopilin\Blog\Models;
 
 use Model;
-use PavelTopilin\Blog\Models\Tag;
+use PavelTopilin\Blog\Models\Post;
 
 /**
  * Model
  */
-class Post extends Model
+class Tag extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
 
@@ -20,7 +20,7 @@ class Post extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'paveltopilin_blog_posts';
+    public $table = 'paveltopilin_blog_tags';
 
     /**
      * @var array Validation rules
@@ -33,6 +33,6 @@ class Post extends Model
     public $jsonable = [];
 
     public $belongsToMany = [
-        'tags' => [Tag::class, 'key' => 'tag_id', 'otherKey' => 'post_id', 'table' => 'paveltopilin_blog_post_tag']
+        'posts' => [Post::class, 'key' => 'post_id', 'otherKey' => 'tag_id', 'table' => 'paveltopilin_blog_post_tag']
     ];
 }

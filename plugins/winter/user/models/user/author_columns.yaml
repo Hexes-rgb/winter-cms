@@ -1,0 +1,23 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: winter.user::lang.user.id
+        invisible: true
+
+    username:
+        label: winter.user::lang.user.username
+        searchable: true
+        invisible: true
+
+    name:
+        label: winter.user::lang.user.name
+        searchable: true
+
+    surname:
+        label: winter.user::lang.user.surname
+        searchable: true
+        invisible: true

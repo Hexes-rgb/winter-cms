@@ -1,0 +1,5 @@
+title: Posts
+modelClass: PavelTopilin\Blog\Models\Post
+nameFrom: Posts
+toolbar:
+    buttons: reorder_toolbar

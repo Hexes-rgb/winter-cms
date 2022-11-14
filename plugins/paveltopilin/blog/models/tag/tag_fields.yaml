@@ -1,0 +1,5 @@
+fields:
+    name:
+        label: 'paveltopilin.blog::lang.tag.name'
+        span: auto
+        type: text

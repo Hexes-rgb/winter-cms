@@ -1,0 +1,8 @@
+tags:
+    label: Tags
+    view:
+        list: $/blog/models/tag/columns.yaml
+    manage:
+        list: $/blog/models/tag/columns.yaml
+    pivot:
+        form: $/blog/models/tag/fields.yaml

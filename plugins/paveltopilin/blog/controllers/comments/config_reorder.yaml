@@ -1,0 +1,5 @@
+title: Comments
+modelClass: PavelTopilin\Blog\Models\Comment
+nameFrom: Comments
+toolbar:
+    buttons: reorder_toolbar

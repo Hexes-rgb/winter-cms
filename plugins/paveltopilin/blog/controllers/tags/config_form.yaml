@@ -1,0 +1,11 @@
+name: Tags
+modelClass: PavelTopilin\Blog\Models\Tag
+form: $/paveltopilin/blog/models/tag/fields.yaml
+defaultRedirect: paveltopilin/blog/tags
+create:
+    redirect: 'paveltopilin/blog/tags/update/:id'
+    redirectClose: paveltopilin/blog/tags
+update:
+    redirect: paveltopilin/blog/tags
+    redirectClose: paveltopilin/blog/tags
+preview: {  }

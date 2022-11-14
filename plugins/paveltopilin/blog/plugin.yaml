@@ -4,3 +4,35 @@ plugin:
     author: 'Pavel Topilin'
     icon: wn-icon-adn
     replaces: {  }
+navigation:
+    blog:
+        label: Blog
+        url: paveltopilin/blog/posts
+        icon: icon-align-justify
+        sideMenu:
+            posts:
+                label: Posts
+                url: paveltopilin/blog/posts
+                icon: icon-book
+                permissions:
+                    - paveltopilin.blog.manage_posts
+            tags:
+                label: Tags
+                url: paveltopilin/blog/tags
+                icon: icon-tags
+                permissions:
+                    - paveltopilin.blog.manage_tags
+            comments:
+                label: Comments
+                url: paveltopilin/blog/comments
+                icon: icon-comments
+permissions:
+    paveltopilin.blog.manage_posts:
+        tab: 'paveltopilin.blog::lang.plugin.name'
+        label: post.manage_posts
+    paveltopilin.blog.manage_tags:
+        tab: 'paveltopilin.blog::lang.plugin.name'
+        label: tag.manage_tags
+    paveltopilin.blog.manage_comments:
+        tab: 'paveltopilin.blog::lang.plugin.name'
+        label: comment.manage_comments

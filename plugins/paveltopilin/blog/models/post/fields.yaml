@@ -1,0 +1,23 @@
+fields:
+    title:
+        label: 'paveltopilin.blog::lang.post.title'
+        span: auto
+        required: 1
+        preset:
+            field: title
+            type: ''
+        type: text
+    text:
+        label: 'paveltopilin.blog::lang.post.text'
+        size: large
+        span: auto
+        required: 1
+        type: textarea
+    user_id:
+        label: 'Author id'
+        span: auto
+        type: number
+    Tags:
+        span: auto
+        path: plugins/paveltopilin/blog/controllers/posts/_tags.htm
+        type: partial

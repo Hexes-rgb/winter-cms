@@ -1,0 +1,13 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    name:
+        label: winter.user::lang.user.name
+        span: auto
+
+    surname:
+        label: winter.user::lang.user.surname
+        span: auto

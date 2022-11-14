@@ -1,0 +1,8 @@
+author:
+    label: Author
+    manage:
+        form: $/winter/user/models/user/author_fields.yaml
+        list: $/winter/user/models/user/author_columns.yaml
+    view:
+        form: $/winter/user/models/user/author_fields.yaml
+        toolbarButtons: link

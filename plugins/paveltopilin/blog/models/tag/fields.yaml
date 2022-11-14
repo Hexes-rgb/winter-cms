@@ -1,0 +1,9 @@
+fields:
+    name:
+        label: 'paveltopilin.blog::lang.tag.name'
+        span: auto
+        type: text
+    Posts:
+        span: auto
+        path: plugins/paveltopilin/blog/controllers/tags/_posts.htm
+        type: partial

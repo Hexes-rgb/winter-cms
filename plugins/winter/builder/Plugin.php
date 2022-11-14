@@ -1,4 +1,6 @@
-<?php namespace Winter\Builder;
+<?php
+
+namespace Winter\Builder;
 
 use Event;
 use Lang;
@@ -58,49 +60,49 @@ class Plugin extends PluginBase
                         'label'       => 'winter.builder::lang.database.menu_label',
                         'icon'        => 'icon-database',
                         'url'         => 'javascript:;',
-                        'attributes'  => ['data-menu-item'=>'database'],
+                        'attributes'  => ['data-menu-item' => 'database'],
                         'permissions' => ['winter.builder.manage_plugins']
                     ],
                     'models' => [
                         'label'       => 'winter.builder::lang.model.menu_label',
                         'icon'        => 'icon-file-code',
                         'url'         => 'javascript:;',
-                        'attributes'  => ['data-menu-item'=>'models'],
+                        'attributes'  => ['data-menu-item' => 'models'],
                         'permissions' => ['winter.builder.manage_plugins']
                     ],
                     'permissions' => [
                         'label'       => 'winter.builder::lang.permission.menu_label',
                         'icon'        => 'icon-unlock',
                         'url'         => '#',
-                        'attributes'  => ['data-no-side-panel'=>'true', 'data-builder-command'=>'permission:cmdOpenPermissions', 'data-menu-item'=>'permissions'],
+                        'attributes'  => ['data-no-side-panel' => 'true', 'data-builder-command' => 'permission:cmdOpenPermissions', 'data-menu-item' => 'permissions'],
                         'permissions' => ['winter.builder.manage_plugins']
                     ],
                     'menus' => [
                         'label'       => 'winter.builder::lang.menu.menu_label',
                         'icon'        => 'icon-sitemap',
                         'url'         => 'javascript:;',
-                        'attributes'  => ['data-no-side-panel'=>'true', 'data-builder-command'=>'menus:cmdOpenMenus', 'data-menu-item'=>'menus'],
+                        'attributes'  => ['data-no-side-panel' => 'true', 'data-builder-command' => 'menus:cmdOpenMenus', 'data-menu-item' => 'menus'],
                         'permissions' => ['winter.builder.manage_plugins']
                     ],
                     'controllers' => [
                         'label'       => 'winter.builder::lang.controller.menu_label',
                         'icon'        => 'icon-signs-post',
                         'url'         => 'javascript:;',
-                        'attributes'  => ['data-menu-item'=>'controllers'],
+                        'attributes'  => ['data-menu-item' => 'controllers'],
                         'permissions' => ['winter.builder.manage_plugins']
                     ],
                     'versions' => [
                         'label'       => 'winter.builder::lang.version.menu_label',
                         'icon'        => 'icon-code-fork',
                         'url'         => 'javascript:;',
-                        'attributes'  => ['data-menu-item'=>'version'],
+                        'attributes'  => ['data-menu-item' => 'version'],
                         'permissions' => ['winter.builder.manage_plugins']
                     ],
                     'localization' => [
                         'label'       => 'winter.builder::lang.localization.menu_label',
                         'icon'        => 'icon-globe',
                         'url'         => 'javascript:;',
-                        'attributes'  => ['data-menu-item'=>'localization'],
+                        'attributes'  => ['data-menu-item' => 'localization'],
                         'permissions' => ['winter.builder.manage_plugins']
                     ]
                 ]

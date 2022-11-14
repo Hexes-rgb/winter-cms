@@ -1,0 +1,10 @@
+name: Posts
+modelClass: PavelTopilin\Blog\Models\Post
+form: $/paveltopilin/blog/models/post/fields.yaml
+defaultRedirect: paveltopilin/blog/posts
+create:
+    redirect: 'paveltopilin/blog/posts/update/:id'
+    redirectClose: paveltopilin/blog/posts
+update:
+    redirect: paveltopilin/blog/posts
+    redirectClose: paveltopilin/blog/posts

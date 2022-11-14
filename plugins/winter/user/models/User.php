@@ -1,4 +1,6 @@
-<?php namespace Winter\User\Models;
+<?php
+
+namespace Winter\User\Models;
 
 use Str;
 use Auth;
@@ -6,9 +8,10 @@ use Mail;
 use Event;
 use Config;
 use Carbon\Carbon;
+use Blog\Models\Comment;
+use Winter\Storm\Auth\AuthException;
 use Winter\Storm\Auth\Models\User as UserBase;
 use Winter\User\Models\Settings as UserSettings;
-use Winter\Storm\Auth\AuthException;
 
 class User extends UserBase
 {
@@ -37,6 +40,10 @@ class User extends UserBase
         'groups' => [UserGroup::class, 'table' => 'users_groups']
     ];
 
+    public $hasMany = [
+        'comments' => [Comment::class, 'key' => 'id', 'otherKey' => 'user_id']
+    ];
+
     public $attachOne = [
         'avatar' => \System\Models\File::class
     ];
@@ -55,7 +62,7 @@ class User extends UserBase
         'created_ip_address',
         'last_ip_address'
     ];
-    
+
     /**
      * Reset guarded fields, because we use $fillable instead.
      * @var array The attributes that aren't mass assignable.
@@ -171,8 +178,7 @@ class User extends UserBase
     {
         if (is_string($options)) {
             $options = ['default' => $options];
-        }
-        elseif (!is_array($options)) {
+        } elseif (!is_array($options)) {
             $options = [];
         }
 
@@ -181,12 +187,11 @@ class User extends UserBase
 
         if ($this->avatar) {
             return $this->avatar->getThumb($size, $size, $options);
-        }
-        else {
-            return '//www.gravatar.com/avatar/'.
-                md5(strtolower(trim($this->email))).
-                '?s='.$size.
-                '&d='.urlencode($default);
+        } else {
+            return '//www.gravatar.com/avatar/' .
+                md5(strtolower(trim($this->email))) .
+                '?s=' . $size .
+                '&d=' . urlencode($default);
         }
     }
 
@@ -223,7 +228,7 @@ class User extends UserBase
 
     public function scopeFilterByGroup($query, $filter)
     {
-        return $query->whereHas('groups', function($group) use ($filter) {
+        return $query->whereHas('groups', function ($group) use ($filter) {
             $group->whereIn('id', $filter);
         });
     }
@@ -285,7 +290,8 @@ class User extends UserBase
         if ($this->is_guest) {
             $login = $this->getLogin();
             throw new AuthException(sprintf(
-                'Cannot login user "%s" as they are not registered.', $login
+                'Cannot login user "%s" as they are not registered.',
+                $login
             ));
         }
 
@@ -308,8 +314,7 @@ class User extends UserBase
             ]);
 
             Event::fire('winter.user.reactivate', [$this]);
-        }
-        else {
+        } else {
             parent::afterLogin();
         }
 
@@ -400,8 +405,7 @@ class User extends UserBase
         $this
             ->newQuery()
             ->where('id', $this->id)
-            ->update(['last_ip_address' => $ipAddress])
-        ;
+            ->update(['last_ip_address' => $ipAddress]);
     }
 
     /**
@@ -420,8 +424,7 @@ class User extends UserBase
         $count = static::make()
             ->where('created_ip_address', $ipAddress)
             ->where('created_at', '>', $timeLimit)
-            ->count()
-        ;
+            ->count();
 
         return $count > 2;
     }
@@ -447,8 +450,7 @@ class User extends UserBase
         $this
             ->newQuery()
             ->where('id', $this->id)
-            ->update(['last_seen' => $this->freshTimestamp()])
-        ;
+            ->update(['last_seen' => $this->freshTimestamp()]);
 
         $this->last_seen = $this->freshTimestamp();
         $this->timestamps = $oldTimestamps;

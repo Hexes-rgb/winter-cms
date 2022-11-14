@@ -1,0 +1,8 @@
+posts:
+    label: Posts
+    view:
+        list: $/blog/models/post/columns.yaml
+    manage:
+        list: $/blog/models/post/columns.yaml
+    pivot:
+        form: $/blog/models/post/fields.yaml
