@@ -8,3 +8,12 @@ scopes:
         label: Created at
         type: daterange
         conditions: created_at >= ':after' AND created_at <= ':before'
+    deleted:
+        # Filter name
+        label: Deleted
+        # Filter type
+        type: switch
+        # SQL conditions
+        conditions:
+            - deleted_at is null
+            - deleted_at is not null

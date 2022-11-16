@@ -1,5 +1,5 @@
 fields:
-    Text:
+    text:
         label: 'paveltopilin.blog::lang.comment.text'
         span: auto
         size: ''
@@ -11,4 +11,12 @@ fields:
         required: 1
         nameFrom: email
         type: relation
-        tab: Misc
+        tab: Author
+    post:
+        label: Post
+        size: ''
+        span: auto
+        required: 1
+        nameFrom: title
+        type: relation
+        tab: Post

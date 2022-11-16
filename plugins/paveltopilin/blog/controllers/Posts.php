@@ -31,4 +31,10 @@ class Posts extends Controller
         parent::__construct();
         BackendMenu::setContext('PavelTopilin.Blog', 'blog', 'posts');
     }
+
+    public function listExtendQuery($query, $definition = null)
+    {
+        parent::listExtendQuery($query);
+        $query->withTrashed();
+    }
 }

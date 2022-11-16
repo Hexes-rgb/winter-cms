@@ -19,3 +19,7 @@ columns:
         label: deleted_at
         type: datetime
         sortable: true
+    comments_count:
+        label: Comments
+        relation: comments
+        useRelationCount: true

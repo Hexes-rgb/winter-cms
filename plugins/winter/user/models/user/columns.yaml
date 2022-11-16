@@ -48,3 +48,13 @@ columns:
         label: winter.user::lang.user.last_ip_address
         searchable: true
         invisible: true
+
+    subscribers_count:
+        label: Subscribers
+        relation: subscribers
+        useRelationCount: true
+
+    subscriptions_count:
+        label: Subscriptions
+        relation: subscriptions
+        useRelationCount: true

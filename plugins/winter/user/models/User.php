@@ -43,8 +43,8 @@ class User extends UserBase
         'groups' => [UserGroup::class, 'table' => 'users_groups'],
         'viewedPosts' => [Post::class, 'table' => 'paveltopilin_blog_views'],
         'likedPosts' => [Post::class, 'table' => 'paveltopilin_blog_likes'],
-        'subscriptions' => [User::class, 'key' => 'id', 'otherKey' => 'sub_id', 'table' => 'paveltopilin_blog_subscriptions'],
-        'subscribers' => [User::class, 'key' => 'id', 'otherKey' => 'author_id', 'table' => 'paveltopilin_blog_subscriptions']
+        'subscriptions' => [User::class, 'key' => 'author_id', 'otherKey' => 'sub_id', 'table' => 'paveltopilin_blog_subscriptions'],
+        'subscribers' => [User::class, 'key' => 'sub_id', 'otherKey' => 'author_id', 'table' => 'paveltopilin_blog_subscriptions']
 
     ];
 

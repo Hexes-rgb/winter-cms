@@ -36,3 +36,6 @@
 1.0.13:
     - 'Created table paveltopilin_blog_views'
     - builder_table_create_paveltopilin_blog_views.php
+1.0.14:
+    - 'Updated table paveltopilin_blog_comments'
+    - builder_table_update_paveltopilin_blog_comments_5.php

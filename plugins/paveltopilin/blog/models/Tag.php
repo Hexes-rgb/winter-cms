@@ -33,6 +33,6 @@ class Tag extends Model
     public $jsonable = [];
 
     public $belongsToMany = [
-        'posts' => [Post::class, 'key' => 'post_id', 'otherKey' => 'tag_id', 'table' => 'paveltopilin_blog_post_tag']
+        'posts' => [Post::class, 'key' => 'tag_id', 'otherKey' => 'post_id', 'table' => 'paveltopilin_blog_post_tag']
     ];
 }

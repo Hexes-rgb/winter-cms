@@ -5,6 +5,7 @@ namespace PavelTopilin\Blog\Models;
 use Model;
 
 use Winter\User\Models\User;
+use PavelTopilin\Blog\Models\Post;
 
 /**
  * Model
@@ -34,7 +35,8 @@ class Comment extends Model
     public $jsonable = [];
 
     public $belongsTo = [
-        'author' => [User::class, 'key' => 'user_id', 'otherKey' => 'id']
+        'author' => [User::class, 'key' => 'user_id', 'otherKey' => 'id'],
+        'post' => [Post::class]
     ];
 
     public $hasMany = [

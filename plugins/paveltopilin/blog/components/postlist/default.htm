@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="mt-2 d-flex justify-content-center">
+        {{ postList.posts.render|raw }}
+    </div>
+    <div class="row mb-2 p-2">
+        {% for post in postList.posts%}
+        <div class="col-6 border rounded gy-3">
+            <p>{{ post.title }}</p>
+            <p>{{ post.text }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>

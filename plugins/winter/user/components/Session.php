@@ -1,4 +1,6 @@
-<?php namespace Winter\User\Components;
+<?php
+
+namespace Winter\User\Components;
 
 use Lang;
 use Auth;
@@ -64,12 +66,12 @@ class Session extends ComponentBase
 
     public function getRedirectOptions()
     {
-        return [''=>'- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+        return ['' => '- none -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
     public function getAllowedUserGroupsOptions()
     {
-        return UserGroup::lists('name','code');
+        return UserGroup::lists('name', 'code');
     }
 
     /**
@@ -91,7 +93,7 @@ class Session extends ComponentBase
             if (empty($this->property('redirect'))) {
                 throw new \InvalidArgumentException('Redirect property is empty');
             }
-            
+
             $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
             return Redirect::guest($redirectUrl);
         }
@@ -192,8 +194,7 @@ class Session extends ComponentBase
                     return false;
                 }
             }
-        }
-        else {
+        } else {
             if ($allowedGroup == self::ALLOW_USER) {
                 return false;
             }

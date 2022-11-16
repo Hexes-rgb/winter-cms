@@ -1,5 +1,5 @@
 fields:
-    Title:
+    title:
         label: 'paveltopilin.blog::lang.post.title'
         size: ''
         span: auto

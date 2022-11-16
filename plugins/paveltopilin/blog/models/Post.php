@@ -5,6 +5,7 @@ namespace PavelTopilin\Blog\Models;
 use Model;
 use Winter\User\Models\User;
 use PavelTopilin\Blog\Models\Tag;
+use PavelTopilin\Blog\Models\Comment;
 
 /**
  * Model
@@ -34,10 +35,16 @@ class Post extends Model
     public $jsonable = [];
 
     public $belongsToMany = [
-        'tags' => [Tag::class, 'key' => 'tag_id', 'otherKey' => 'post_id', 'table' => 'paveltopilin_blog_post_tag'],
-        'viewes' => [User::class, 'table' => 'paveltopilin_blog_views']
+        'tags' => [Tag::class, 'key' => 'post_id', 'otherKey' => 'tag_id', 'table' => 'paveltopilin_blog_post_tag'],
+        'viewes' => [User::class, 'table' => 'paveltopilin_blog_views'],
+        'likes' => [User::class, 'table' => 'paveltopilin_blog_likes']
     ];
+
     public $belongsTo = [
         'author' => [User::class, 'key' => 'user_id', 'otherKey' => 'id']
+    ];
+
+    public $hasMany = [
+        'comments' => [Comment::class]
     ];
 }
