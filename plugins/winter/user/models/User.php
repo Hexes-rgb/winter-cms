@@ -41,10 +41,10 @@ class User extends UserBase
      */
     public $belongsToMany = [
         'groups' => [UserGroup::class, 'table' => 'users_groups'],
-        'viewedPosts' => [Post::class, 'table' => 'paveltopilin_blog_views'],
-        'likedPosts' => [Post::class, 'table' => 'paveltopilin_blog_likes'],
-        'subscriptions' => [User::class, 'key' => 'author_id', 'otherKey' => 'sub_id', 'table' => 'paveltopilin_blog_subscriptions'],
-        'subscribers' => [User::class, 'key' => 'sub_id', 'otherKey' => 'author_id', 'table' => 'paveltopilin_blog_subscriptions']
+        'viewedPosts' => [Post::class, 'table' => 'paveltopilin_blog_views', 'timestamps' => true],
+        'likedPosts' => [Post::class, 'table' => 'paveltopilin_blog_likes', 'timestamps' => true, 'pivot' => ['deleted_at']],
+        'subscriptions' => [User::class, 'key' => 'author_id', 'otherKey' => 'sub_id', 'table' => 'paveltopilin_blog_subscriptions', 'timestamps' => true, 'pivot' => ['deleted_at']],
+        'subscribers' => [User::class, 'key' => 'sub_id', 'otherKey' => 'author_id', 'table' => 'paveltopilin_blog_subscriptions', 'timestamps' => true, 'pivot' => ['deleted_at']]
 
     ];
 

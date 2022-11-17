@@ -5,7 +5,9 @@
     <div class="row mb-2 p-2">
         {% for post in postList.posts%}
         <div class="col-6 border rounded gy-3">
-            <p>{{ post.title }}</p>
+            <a href="/post/{{ post.id }}" class="text-black link link-primary text-decoration-none">
+                <p>{{ post.title }}</p>
+            </a>
             <p>{{ post.text }}</p>
         </div>
         {% endfor %}

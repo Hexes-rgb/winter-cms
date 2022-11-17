@@ -36,8 +36,8 @@ class Post extends Model
 
     public $belongsToMany = [
         'tags' => [Tag::class, 'key' => 'post_id', 'otherKey' => 'tag_id', 'table' => 'paveltopilin_blog_post_tag'],
-        'viewes' => [User::class, 'table' => 'paveltopilin_blog_views'],
-        'likes' => [User::class, 'table' => 'paveltopilin_blog_likes']
+        'viewes' => [User::class, 'table' => 'paveltopilin_blog_views', 'timestamps' => true],
+        'likes' => [User::class, 'table' => 'paveltopilin_blog_likes', 'timestamps' => true, 'pivot' => ['deleted_at']]
     ];
 
     public $belongsTo = [
@@ -47,4 +47,11 @@ class Post extends Model
     public $hasMany = [
         'comments' => [Comment::class]
     ];
+
+    public function getLikesCount()
+    {
+        return $this->loadCount(['likes' => function ($query) {
+            $query->where('paveltopilin_blog_likes.deleted_at', null);
+        }])->likes_count;
+    }
 }

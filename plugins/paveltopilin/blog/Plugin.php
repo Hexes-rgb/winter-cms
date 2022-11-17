@@ -10,6 +10,7 @@ class Plugin extends PluginBase
     {
         return [
             \PavelTopilin\Blog\Components\PostList::class       => 'postList',
+            \PavelTopilin\Blog\Components\PostShow::class       => 'postShow',
         ];
     }
 
