@@ -17,7 +17,7 @@ class Comment extends Model
     use \Winter\Storm\Database\Traits\SoftDelete;
 
     protected $dates = ['deleted_at'];
-
+    protected $fillable = ['text', 'user_id', 'post_id', 'comment_id'];
 
     /**
      * @var string The database table used by the model.
@@ -40,6 +40,6 @@ class Comment extends Model
     ];
 
     public $hasMany = [
-        'comments' => [Comment::class, 'key' => 'id', 'otherKey' => 'comment_id']
+        'comments' => [Comment::class, 'key' => 'comment_id', 'otherKey' => 'id']
     ];
 }

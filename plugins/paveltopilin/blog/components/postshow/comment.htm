@@ -1,0 +1,17 @@
+<div class="mt-2 ms-3 mb-2 border rounded">
+    <p>{{ comment.author.name }}</p>
+    <p>{{ comment.text }}</p>
+    <div class="w-25">
+        <form class="createAnswers d-flex" id="{{ comment.id }}">
+            <input name="text" type="text" class="form-control" autocomplete="off"/>
+            <input name="post_id" value="{{ comment.post.id }}" type="hidden"/>
+            <input name="comment_id" value="{{ comment.id }}" type="hidden"/>
+            <button type="submit" class="btn btn-outline-primary">Reply</button>
+        </form>
+    </div>
+    <div id="answers{{ comment.id }}">
+        {% for comment in comment.comments%}
+            {% partial 'postShow::comment' comment=comment %}
+        {% endfor %}
+    </div>
+</div>

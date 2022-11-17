@@ -45,7 +45,7 @@ class Post extends Model
     ];
 
     public $hasMany = [
-        'comments' => [Comment::class]
+        'comments' => [Comment::class, 'key' => 'post_id', 'otherKey' => 'id', 'conditions' => 'comment_id is null']
     ];
 
     public function getLikesCount()

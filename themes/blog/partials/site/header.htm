@@ -18,8 +18,9 @@
         <a href="/register" class="btn btn-primary">Sign-up</a>
     {% else %}
         <a href="/account" class="link link-primary text-decoration-none">{{ user.name }}</a>
-        <button data-request="onLogout" data-request-data="redirect: '/'" class="ms-1 btn btn-outline-danger">Log out</button>
+        <button type="button" id="logout" class="ms-1 btn btn-outline-danger">Log out</button>
     {% endif %}
       </div>
     </header>
   </div>
+<script src="{{ '/plugins/paveltopilin/blog/assets/js/logout.js' }}"></script>

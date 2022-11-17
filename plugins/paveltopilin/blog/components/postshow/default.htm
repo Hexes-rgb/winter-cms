@@ -1,3 +1,20 @@
 <div id="post" class="container w-75 border rounded">
     {% partial 'postShow::post' %}
 </div>
+<div class="container mt-3 w-75 border rounded">
+    <div class="m-2">
+        Commentaries:
+    </div>
+    <div class="w-25">
+        <form id="createComment" class='d-flex'>
+            <input name="text" type="text" class="form-control" autocomplete="off"/>
+            <input name="post_id" value="{{ post.id }}" type="hidden"/>
+            <button type="submit" class="btn btn-outline-primary">Reply</button>
+        </form>
+    </div>
+    <div id="comments">
+        {% for comment in post.comments%}
+            {% partial 'postShow::comment' comment=comment %}
+        {% endfor %}
+  </div>
+</div>

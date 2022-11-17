@@ -8,6 +8,9 @@ use Winter\User\Facades\Auth;
 use Cms\Classes\ComponentBase;
 use Backend\Facades\BackendAuth;
 use PavelTopilin\Blog\Models\Post;
+use PavelTopilin\Blog\Models\Comment;
+use Winter\Storm\Support\Facades\Flash;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostShow extends ComponentBase
 {
@@ -52,5 +55,19 @@ class PostShow extends ComponentBase
         }
         $post->load('likes');
         $this->page['post'] = $post;
+    }
+
+    public function onCreateComment()
+    {
+        $text = input('text');
+        $user = Auth::getUser();
+        $comment = Comment::create([
+            'text' => $text,
+            'user_id' => $user->id,
+            'post_id' => input('post_id'),
+            'comment_id' => input('comment_id')
+        ]);
+        $this->page['comment'] = $comment;
+        Flash::success('You did it!');
     }
 }
