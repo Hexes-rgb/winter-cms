@@ -42,4 +42,9 @@ class Comment extends Model
     public $hasMany = [
         'comments' => [Comment::class, 'key' => 'comment_id', 'otherKey' => 'id']
     ];
+
+    public function isDelete()
+    {
+        return $this->trashed();
+    }
 }

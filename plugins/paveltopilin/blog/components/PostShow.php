@@ -10,7 +10,9 @@ use Backend\Facades\BackendAuth;
 use PavelTopilin\Blog\Models\Post;
 use PavelTopilin\Blog\Models\Comment;
 use Winter\Storm\Support\Facades\Flash;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
+use Winter\Storm\Exception\ValidationException;
 
 class PostShow extends ComponentBase
 {
@@ -36,7 +38,7 @@ class PostShow extends ComponentBase
     public function onRun()
     {
         $post_id = $this->param('post_id');
-        $this->page['post'] =  Post::findOrFail($post_id);
+        $this->page['post'] = Post::findOrFail($post_id);
     }
 
     public function onLike()
@@ -59,6 +61,15 @@ class PostShow extends ComponentBase
 
     public function onCreateComment()
     {
+        // $data = post();
+        // $rules = [
+        //     'text' => 'required',
+        // ];
+        // $validation = Validator::make($data, $rules);
+        // if ($validation->fails()) {
+        //     $this->page['errors'] = $validation->errors();
+        // }
+        // $data = $validation->validated();
         $text = input('text');
         $user = Auth::getUser();
         $comment = Comment::create([
@@ -69,5 +80,21 @@ class PostShow extends ComponentBase
         ]);
         $this->page['comment'] = $comment;
         Flash::success('You did it!');
+    }
+
+    public function onDeleteComment()
+    {
+        $comment = Comment::findOrFail(input('comment_id'));
+        $comment->delete();
+        $this->page['comment'] = $comment;
+        Flash::success('Comment has been deleted');
+    }
+
+    public function onRestoreComment()
+    {
+        $comment = Comment::withTrashed()->find(input('comment_id'));
+        $comment->restore();
+        $this->page['comment'] = $comment;
+        Flash::success('Comment has been restored');
     }
 }

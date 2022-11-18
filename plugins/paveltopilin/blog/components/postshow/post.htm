@@ -16,13 +16,17 @@
     </div>
     <div class="col-3">
         Likes:
-        <button
-        data-request="onLike"
-        class="bg-white border-0"
-        data-request-update="'{{ __SELF__ }}::post': '#post'"
-        data-request-data="post_id: {{ post.id }}">
+        {# {% if user %} #}
+            <button
+            data-request="onLike"
+            class="bg-white border-0"
+            data-request-update="'{{ __SELF__ }}::post': '#post'"
+            data-request-data="post_id: {{ post.id }}">
+                <img src="/themes/blog/assets/images/like.png" width="25px">
+            </button>
+        {# {% else %}
             <img src="/themes/blog/assets/images/like.png" width="25px">
-        </button>
+        {% endif %} #}
         {{ post.getLikesCount() }}
     </div>
 </div>

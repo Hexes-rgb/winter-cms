@@ -4,6 +4,7 @@ $(document).on('submit', '#createComment', function(event){
     $.request('onCreateComment', {
         form: form,
         update: {'postShow::comment': '@#comments'},
+        loading: $.wn.stripeLoadIndicator,
         flash: 1,
         handleFlashMessage: function(message, type) {
             $.wn.flashMsg({ text: message, class: type })
