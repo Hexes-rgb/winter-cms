@@ -10,6 +10,7 @@ use Backend\Facades\BackendAuth;
 use PavelTopilin\Blog\Models\Post;
 use PavelTopilin\Blog\Models\Comment;
 use Winter\Storm\Support\Facades\Flash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 use Winter\Storm\Exception\ValidationException;
@@ -61,16 +62,17 @@ class PostShow extends ComponentBase
 
     public function onCreateComment()
     {
-        // $data = post();
-        // $rules = [
-        //     'text' => 'required',
-        // ];
-        // $validation = Validator::make($data, $rules);
-        // if ($validation->fails()) {
-        //     $this->page['errors'] = $validation->errors();
-        // }
-        // $data = $validation->validated();
-        $text = input('text');
+        $data = post();
+        $rules = [
+            'text' => 'required',
+        ];
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails()) {
+            // throw new ValidationException($validator);
+            return response()->json(['errors' => $validator->errors()]);
+        }
+        $data = $validator->validated();
+        $text = $data['text'];
         $user = Auth::getUser();
         $comment = Comment::create([
             'text' => $text,
@@ -78,8 +80,9 @@ class PostShow extends ComponentBase
             'post_id' => input('post_id'),
             'comment_id' => input('comment_id')
         ]);
-        $this->page['comment'] = $comment;
         Flash::success('You did it!');
+        $this->page['comment'] = $comment;
+        return response()->json(['partial' => $this->renderPartial('postShow::comment')]);
     }
 
     public function onDeleteComment()

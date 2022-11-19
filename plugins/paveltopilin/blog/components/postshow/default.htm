@@ -6,13 +6,23 @@
         Commentaries:
     </div>
     <div class="w-25">
-        <form id="createComment" class='d-flex'>
+        <form id="createComment">
             <div class="alert alert-danger" style="display: none">
             </div>
-            <input name="text" type="text" class="form-control" autocomplete="off" required/>
-            <input name="post_id" value="{{ post.id }}" type="hidden"/>
-            <button type="submit" class="btn btn-outline-primary">Reply</button>
+            <div class="d-flex">
+                <input name="text" type="text" class="form-control" autocomplete="off"/>
+                <input name="post_id" value="{{ post.id }}" type="hidden"/>
+                <button type="submit" class="btn btn-outline-primary">Reply</button>
+            </div>
         </form>
+        {# <form data-request="onCreateComment" data-request-validate data-request-flash data-request-update: "'postShow::comment': '@#comments'">
+            <div class="alert alert-danger" style="">
+             <span data-validate-for="text"></span>
+            </div>
+            <input name="text" type="text" class="form-control" autocomplete="off"/>
+            <input name="post_id" value="{{ post.id }}" type="hidden"/>
+            <button data-attach-loading type="submit" class="btn btn-outline-primary">Reply</button>
+        </form> #}
     </div>
     <div id="comments">
         {% for comment in post.comments().withTrashed().get() %}
