@@ -3,6 +3,7 @@
 namespace PavelTopilin\Blog\Models;
 
 use Model;
+use Carbon\Carbon;
 use Winter\User\Models\User;
 use PavelTopilin\Blog\Models\Tag;
 use PavelTopilin\Blog\Models\Comment;
@@ -53,5 +54,10 @@ class Post extends Model
         return $this->loadCount(['likes' => function ($query) {
             $query->where('paveltopilin_blog_likes.deleted_at', null);
         }])->likes_count;
+    }
+
+    public function scopeDailyPosts($query)
+    {
+        $query->where('created_at', '>', Carbon::now()->subDays(1));
     }
 }

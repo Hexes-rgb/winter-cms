@@ -242,6 +242,11 @@ class User extends UserBase
         });
     }
 
+    public function scopeDayAway($query)
+    {
+        $query->where('last_seen', '<', Carbon::now()->subDays(1));
+    }
+
     //
     // Events
     //

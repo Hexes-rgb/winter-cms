@@ -1,0 +1,8 @@
+<strong>Hello, here while you were gone, new cool posts on our blog came out.</strong>
+{% for post in posts%}
+    <div class="mt-2">
+        <a href="http://127.0.0.1:8000/post/{{ post.id }}">
+            {{ post.title }}
+        </a>
+    </div>
+{% endfor %}

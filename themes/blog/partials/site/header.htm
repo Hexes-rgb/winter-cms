@@ -17,6 +17,7 @@
         <a href="/signin" class="btn btn-outline-primary me-2">Sign-in</a>
         <a href="/register" class="btn btn-primary">Sign-up</a>
     {% else %}
+        <a href="/post/create" class="me-2 link link-primary text-decoration-none">Create new post</a>
         <a href="/account" class="link link-primary text-decoration-none">{{ user.name }}</a>
         <button type="button" id="logout" class="ms-1 btn btn-outline-danger">Log out</button>
     {% endif %}
