@@ -1,4 +1,6 @@
-<?php namespace Winter\Translate\Classes;
+<?php
+
+namespace Winter\Translate\Classes;
 
 use App;
 use Schema;
@@ -105,12 +107,10 @@ class Translator
 
         if (Session::has(self::SESSION_CONFIGURED)) {
             $result = true;
-        }
-        elseif (App::hasDatabase() && Schema::hasTable('winter_translate_locales')) {
+        } elseif (App::hasDatabase() && Schema::hasTable('winter_translate_locales')) {
             Session::put(self::SESSION_CONFIGURED, true);
             $result = true;
-        }
-        else {
+        } else {
             $result = false;
         }
 

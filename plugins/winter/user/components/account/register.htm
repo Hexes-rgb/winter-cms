@@ -1,51 +1,64 @@
 {% if canRegister %}
-    <h3>Register</h3>
+    <h3>{{ 'Register'|_ }}</h3>
 
     {{ form_ajax('onRegister') }}
 
         <div class="form-group">
-            <label for="registerName">Full Name</label>
+            <label for="registerName">{{ 'Full Name'|_ }}</label>
             <input
                 name="name"
                 type="text"
                 class="form-control"
                 id="registerName"
-                placeholder="Enter your full name" />
+                placeholder={{ "Enter your full name"|_ }} />
         </div>
 
         <div class="form-group">
-            <label for="registerEmail">Email</label>
+            <label for="registerEmail">{{ 'Email'|_ }}</label>
             <input
                 name="email"
                 type="email"
                 class="form-control"
                 id="registerEmail"
-                placeholder="Enter your email" />
+                placeholder={{ "Enter your email"|_ }} />
         </div>
 
         {% if loginAttribute == "username" %}
             <div class="form-group">
-                <label for="registerUsername">Username</label>
+                <label for="registerUsername">{{ 'Username'|_ }}</label>
                 <input
                     name="username"
                     type="text"
                     class="form-control"
                     id="registerUsername"
-                    placeholder="Enter your username" />
+                    placeholder={{ "Enter your username"|_ }} />
             </div>
         {% endif %}
 
         <div class="form-group">
-            <label for="registerPassword">Password</label>
+            <label for="registerPassword">{{ 'Password'|_ }}</label>
             <input
                 name="password"
                 type="password"
                 class="form-control"
                 id="registerPassword"
-                placeholder="Choose a password" />
+                placeholder={{ "Choose a password"|_ }} />
         </div>
 
-        <button type="submit" class="btn btn-default">Register</button>
+        <div class="form-group">
+            <label for="registerLocale">{{ 'Select locale'|_ }}</label>
+            <select
+                name="locale"
+                class="form-control"
+                id="registerLocale"
+                placeholder={{ "Choose a locale"|_ }} />
+                    {% for locale in locales %}
+                        <option value="{{ locale.code }}">{{ locale.name }}</option>
+                    {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-default">{{ 'Register'|_ }}</button>
 
     {{ form_close() }}
 {% else %}

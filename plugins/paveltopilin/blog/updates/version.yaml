@@ -39,3 +39,6 @@
 1.0.14:
     - 'Updated table paveltopilin_blog_comments'
     - builder_table_update_paveltopilin_blog_comments_5.php
+1.0.15:
+    - 'Add seeder for translated messages'
+    - SeedTranslatedMessagesTable.php

@@ -7,27 +7,27 @@
             type="text"
             class="form-control"
             id="userSigninLogin"
-            placeholder="Enter your {{ loginAttributeLabel|lower }}" />
+            placeholder={{ "Enter your {{ loginAttributeLabel|lower }}"|_ }} />
     </div>
 
     <div class="form-group">
-        <label for="userSigninPassword">Password</label>
+        <label for="userSigninPassword">{{ "Password"|_ }}</label>
         <input
             name="password"
             type="password"
             class="form-control"
             id="userSigninPassword"
-            placeholder="Enter your password" />
+            placeholder={{ "Enter your password"|_ }} />
     </div>
 
     {% if rememberLoginMode == 'ask' %}
     <div class="form-group">
         <div class="checkbox">
-        <label><input name="remember" type="checkbox" value="1">Stay logged in</label>
+        <label><input name="remember" type="checkbox" value="1">{{ "Stay logged in"|_ }}</label>
         </div>
     </div>
     {% endif %}
 
-    <button type="submit" class="btn btn-default">Sign in</button>
+    <button type="submit" class="btn btn-default">{{ 'Sign in'|_ }}</button>
 
 {{ form_close() }}

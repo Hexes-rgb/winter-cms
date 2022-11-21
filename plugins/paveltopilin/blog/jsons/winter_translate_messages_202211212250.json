@@ -1,0 +1,290 @@
+{
+"winter_translate_messages": [
+	{
+		"id" : 1,
+		"code" : "006818d6240dd76e6bd7883718ab5fd9",
+		"message_data" : "{\"x\":\"Please select your language:\",\"ru\":\"\\u041f\\u043e\\u0436\\u0430\\u043b\\u0443\\u0439\\u0441\\u0442\\u0430, \\u0432\\u044b\\u0431\\u0435\\u0440\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448 \\u044f\\u0437\\u044b\\u043a:\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 2,
+		"code" : "8cf04a9734132302f96da8e113e80ce5",
+		"message_data" : "{\"x\":\"Home\",\"ru\":\"\\u0413\\u043b\\u0430\\u0432\\u043d\\u0430\\u044f\"}",
+		"found" : 1,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 3,
+		"code" : "e5b47edd743751a81819b7f421639303",
+		"message_data" : "{\"x\":\"Sign-in\",\"ru\":\"\\u0412\\u043e\\u0439\\u0442\\u0438\"}",
+		"found" : 1,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 4,
+		"code" : "e56a5bb4206cb65aa07f9a88cc0f86b7",
+		"message_data" : "{\"x\":\"Sign-up\",\"ru\":\"\\u0417\\u0430\\u0440\\u0435\\u0433\\u0438\\u0441\\u0442\\u0440\\u0438\\u0440\\u043e\\u0432\\u0430\\u0442\\u044c\\u0441\\u044f\"}",
+		"found" : 1,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 5,
+		"code" : "bd6f767682ce39e58732ce9e569dde12",
+		"message_data" : "{\"x\":\"Create new post\",\"ru\":\"\\u0421\\u043e\\u0437\\u0434\\u0430\\u0442\\u044c \\u043d\\u043e\\u0432\\u044b\\u0439 \\u043f\\u043e\\u0441\\u0442\"}",
+		"found" : 1,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 6,
+		"code" : "4394c8d8e63c470de62ced3ae85de5ae",
+		"message_data" : "{\"x\":\"Log out\",\"ru\":\"\\u0412\\u044b\\u0439\\u0442\\u0438\"}",
+		"found" : 1,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 7,
+		"code" : "b78a3223503896721cca1303f776159b",
+		"message_data" : "{\"x\":\"Title\",\"ru\":\"\\u0417\\u0430\\u0433\\u043e\\u043b\\u043e\\u0432\\u043e\\u043a\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 8,
+		"code" : "9dffbf69ffba8bc38bc4e01abf4b1675",
+		"message_data" : "{\"x\":\"Text\",\"ru\":\"\\u0422\\u0435\\u043a\\u0441\\u0442\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 9,
+		"code" : "686e697538050e4664636337cc3b834f",
+		"message_data" : "{\"x\":\"Create\",\"ru\":\"\\u0421\\u043e\\u0437\\u0434\\u0430\\u0442\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 10,
+		"code" : "5f2b9345f9bbd74079b99d6fcf461408",
+		"message_data" : "{\"x\":\"Created at\",\"ru\":\"\\u0421\\u043e\\u0437\\u0434\\u0430\\u043d\\u043e\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 11,
+		"code" : "2828427deab693d31b81c2dd7189d73e",
+		"message_data" : "{\"x\":\"Updated at\",\"ru\":\"\\u041e\\u0431\\u043d\\u043e\\u0432\\u043b\\u0435\\u043d\\u043e\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 12,
+		"code" : "a517747c3d12f99244ae598910d979c5",
+		"message_data" : "{\"x\":\"Author\",\"ru\":\"\\u0410\\u0432\\u0442\\u043e\\u0440\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 13,
+		"code" : "ea69ec28bcb1952b096267cc88060102",
+		"message_data" : "{\"x\":\"Likes\",\"ru\":\"\\u041b\\u0430\\u0439\\u043a\\u0438\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 14,
+		"code" : "910d5f8276f86182b56afa1c757f2395",
+		"message_data" : "{\"x\":\"Commentaries\",\"ru\":\"\\u041a\\u043e\\u043c\\u043c\\u0435\\u043d\\u0442\\u0430\\u0440\\u0438\\u0438\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 15,
+		"code" : "25d8df6e580905091a0d5ef5b9e05bf0",
+		"message_data" : "{\"x\":\"Reply\",\"ru\":\"\\u041e\\u0442\\u0432\\u0435\\u0442\\u0438\\u0442\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 16,
+		"code" : "f2a6c498fb90ee345d997f888fce3b18",
+		"message_data" : "{\"x\":\"Delete\",\"ru\":\"\\u0423\\u0434\\u0430\\u043b\\u0438\\u0442\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 17,
+		"code" : "eec67f63aad5646b790a503115016a9e",
+		"message_data" : "{\"x\":\"Enter your {{ loginAttributeLabel|lower }}\",\"ru\":\"\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448 {{ loginAttributeLabel|lower }}\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 18,
+		"code" : "dc647eb65e6711e155375218212b3964",
+		"message_data" : "{\"x\":\"Password\",\"ru\":\"\\u041f\\u0430\\u0440\\u043e\\u043b\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 19,
+		"code" : "e8d28194f9b3498d21fbda21321d0226",
+		"message_data" : "{\"x\":\"Enter your password\",\"ru\":\"\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448 \\u043f\\u0430\\u0440\\u043e\\u043b\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 20,
+		"code" : "b6d4223e60986fa4c9af77ee5f7149c5",
+		"message_data" : "{\"x\":\"Sign in\",\"ru\":\"\\u0412\\u043e\\u0439\\u0442\\u0438\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 21,
+		"code" : "0ba7583639a274c434bbe6ef797115a4",
+		"message_data" : "{\"x\":\"Register\",\"ru\":\"\\u0420\\u0435\\u0433\\u0438\\u0441\\u0442\\u0440\\u0430\\u0446\\u0438\\u044f\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 22,
+		"code" : "630058029627ce58e7571e7a5b6ec591",
+		"message_data" : "{\"x\":\"Full Name\",\"ru\":\"\\u041f\\u043e\\u043b\\u043d\\u043e\\u0435 \\u0438\\u043c\\u044f\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 23,
+		"code" : "387af98b1574a74e12eb99f3ed220831",
+		"message_data" : "{\"x\":\"Enter your full name\",\"ru\":\"\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448\\u0435 \\u043f\\u043e\\u043b\\u043d\\u043e\\u0435 \\u0438\\u043c\\u044f\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 24,
+		"code" : "ce8ae9da5b7cd6c3df2929543a9af92d",
+		"message_data" : "{\"x\":\"Email\",\"ru\":\"\\u042d\\u043b\\u0435\\u043a\\u0442\\u0440\\u043e\\u043d\\u043d\\u0430\\u044f \\u043f\\u043e\\u0447\\u0442\\u0430\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 25,
+		"code" : "95d3fa6b9e69c588a333f4e78139a7cd",
+		"message_data" : "{\"x\":\"Enter your email\",\"ru\":\"\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448\\u0443 \\u044d\\u043b\\u0435\\u043a\\u0442\\u0440\\u043e\\u043d\\u043d\\u0443\\u044e \\u043f\\u043e\\u0447\\u0442\\u0443\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 26,
+		"code" : "f1c825f275f3380b633e09ea14f06544",
+		"message_data" : "{\"x\":\"Choose a password\",\"ru\":\"\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u043f\\u0430\\u0440\\u043e\\u043b\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 27,
+		"code" : "03c61302b065977ac5b1108ee12a49f6",
+		"message_data" : "{\"x\":\"Lost your password?\",\"ru\":\"\\u0417\\u0430\\u0431\\u044b\\u043b\\u0438 \\u043f\\u0430\\u0440\\u043e\\u043b\\u044c?\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 28,
+		"code" : "568b3cbbfe205499d2ed741a8b93c003",
+		"message_data" : "{\"x\":\"No problem! Enter your email address to verify your account.\",\"ru\":\"\\u041d\\u0435\\u0442 \\u043f\\u0440\\u043e\\u0431\\u043b\\u0435\\u043c! \\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448\\u0443 \\u044d\\u043b\\u0435\\u043a\\u0442\\u043e\\u043d\\u043d\\u0443\\u044e \\u043f\\u043e\\u0447\\u0442\\u0443 \\u0434\\u043b\\u044f \\u043f\\u043e\\u0434\\u0442\\u0432\\u0435\\u0440\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f \\u0430\\u043a\\u043a\\u0430\\u0443\\u043d\\u0442\\u0430.\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 29,
+		"code" : "a443891daad24a73d3cc11f876228807",
+		"message_data" : "{\"x\":\"Restore password\",\"ru\":\"\\u0412\\u043e\\u0441\\u0441\\u0442\\u0430\\u043d\\u043e\\u0432\\u0438\\u0442\\u044c \\u043f\\u0430\\u0440\\u043e\\u043b\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 30,
+		"code" : "ae3bb2a1ac61750150b606298091d38a",
+		"message_data" : "{\"x\":\"New Password\",\"ru\":\"\\u041d\\u043e\\u0432\\u044b\\u0439 \\u043f\\u0430\\u0440\\u043e\\u043b\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 31,
+		"code" : "294ec22d2c13a4ee81c753f4ca38a095",
+		"message_data" : "{\"x\":\"Confirm New Password\",\"ru\":\"\\u041f\\u043e\\u0434\\u0442\\u0432\\u0435\\u0440\\u0434\\u0438\\u0442\\u0435 \\u043d\\u043e\\u0432\\u044b\\u0439 \\u043f\\u0430\\u0440\\u043e\\u043b\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 32,
+		"code" : "c9cc8cce247e49bae79f15173ce97354",
+		"message_data" : "{\"x\":\"Save\",\"ru\":\"\\u0421\\u043e\\u0445\\u0440\\u0430\\u043d\\u0438\\u0442\\u044c\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 33,
+		"code" : "5f5689724b2fc0349f5bbca0f9b360bd",
+		"message_data" : "{\"x\":\"Deactivate account\",\"ru\":\"\\u0414\\u0435\\u0430\\u043a\\u0442\\u0438\\u0432\\u0438\\u0440\\u043e\\u0432\\u0430\\u0442\\u044c \\u0430\\u043a\\u043a\\u0430\\u0443\\u043d\\u0442\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 34,
+		"code" : "6dffac5863359df2a6c6ef175b8128ca",
+		"message_data" : "{\"x\":\"Deactivate your account?\",\"ru\":\"\\u0414\\u0435\\u0430\\u043a\\u0442\\u0438\\u0432\\u0438\\u0440\\u043e\\u0432\\u0430\\u0442\\u044c \\u0432\\u0430\\u0448 \\u0430\\u043a\\u043a\\u0430\\u0443\\u043d\\u0442?\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 35,
+		"code" : "8a95b2e8e546821ed9727dc4b01e57b2",
+		"message_data" : "{\"x\":\"Your account will be disabled and your details removed from the site.\",\"ru\":\"\\u0412\\u0430\\u0448\\u0430 \\u0443\\u0447\\u0435\\u0442\\u043d\\u0430\\u044f \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0431\\u0443\\u0434\\u0435\\u0442 \\u043e\\u0442\\u043a\\u043b\\u044e\\u0447\\u0435\\u043d\\u0430, \\u0430 \\u0432\\u0430\\u0448\\u0438 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0435 \\u0443\\u0434\\u0430\\u043b\\u0435\\u043d\\u044b \\u0441 \\u0441\\u0430\\u0439\\u0442\\u0430.\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 36,
+		"code" : "965b7c55bfc83c384d58f66a7d01167b",
+		"message_data" : "{\"x\":\"You can reactivate your account any time by signing back in.\",\"ru\":\"\\u0412\\u044b \\u043c\\u043e\\u0436\\u0435\\u0442\\u0435 \\u043f\\u043e\\u0432\\u0442\\u043e\\u0440\\u043d\\u043e \\u0430\\u043a\\u0442\\u0438\\u0432\\u0438\\u0440\\u043e\\u0432\\u0430\\u0442\\u044c \\u0441\\u0432\\u043e\\u044e \\u0443\\u0447\\u0435\\u0442\\u043d\\u0443\\u044e \\u0437\\u0430\\u043f\\u0438\\u0441\\u044c \\u0432 \\u043b\\u044e\\u0431\\u043e\\u0435 \\u0432\\u0440\\u0435\\u043c\\u044f, \\u0432\\u044b\\u043f\\u043e\\u043b\\u043d\\u0438\\u0432 \\u043f\\u043e\\u0432\\u0442\\u043e\\u0440\\u043d\\u044b\\u0439 \\u0432\\u0445\\u043e\\u0434.\\u0412\\u044b \\u043c\\u043e\\u0436\\u0435\\u0442\\u0435 \\u0440\\u0435\\u0430\\u043a\\u0442\\u0438\\u0432\\u0438\\u0440\\u043e\\u0432\\u0430\\u0442\\u044c \\u0432\\u0430\\u0448 \\u0430\\u043a\\u043a\\u0430\\u0443\\u043d\\u0442 \\u0432 \"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 37,
+		"code" : "c62309b4c0b59635a2805209ffbfc688",
+		"message_data" : "{\"x\":\"To continue, please enter your password:\",\"ru\":\"\\u0427\\u0442\\u043e\\u0431\\u044b \\u043f\\u0440\\u043e\\u0434\\u043e\\u043b\\u0436\\u0438\\u0442\\u044c, \\u043f\\u043e\\u0436\\u0430\\u043b\\u0443\\u0439\\u0441\\u0442\\u0430, \\u0432\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0432\\u0430\\u0448 \\u043f\\u0430\\u0440\\u043e\\u043b\\u044c:\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 38,
+		"code" : "e9a80c62b2ec5227b2d05b3acba325a0",
+		"message_data" : "{\"x\":\"Confirm Deactivate Account\",\"ru\":\"\\u041f\\u043e\\u0434\\u0442\\u0432\\u0435\\u0440\\u0434\\u0438\\u0442\\u0435 \\u0434\\u0435\\u0430\\u043a\\u0442\\u0438\\u0432\\u0430\\u0446\\u0438\\u044e \\u0430\\u043a\\u043a\\u0430\\u0443\\u043d\\u0442\\u0430\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 39,
+		"code" : "a7251a0a9ac07fd8c68dedf1d428457b",
+		"message_data" : "{\"x\":\"I changed my mind\",\"ru\":\"\\u042f \\u043f\\u0435\\u0440\\u0435\\u0434\\u0443\\u043c\\u0430\\u043b\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 40,
+		"code" : "8c12a823086ab0fb64a1fbf463c66267",
+		"message_data" : "{\"x\":\"Select locale\",\"ru\":\"\\u0412\\u044b\\u0431\\u0435\\u0440\\u0438\\u0442\\u0435 \\u044f\\u0437\\u044b\\u043a \\u0441\\u0430\\u0439\\u0442\\u0430\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	},
+	{
+		"id" : 41,
+		"code" : "fa16c38b11659d30315dcbfdba7f53fa",
+		"message_data" : "{\"x\":\"Choose a locale\",\"ru\":\"\\u0412\\u044b\\u0431\\u0435\\u0440\\u0438\\u0442\\u0435 \\u044f\\u0437\\u044b\\u043a \\u0441\\u0430\\u0439\\u0442\\u0430\"}",
+		"found" : 0,
+		"code_pre_2_1_0" : null
+	}
+]}

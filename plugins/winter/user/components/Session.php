@@ -2,17 +2,19 @@
 
 namespace Winter\User\Components;
 
-use Lang;
 use Auth;
+use Lang;
 use Event;
 use Flash;
 use Request;
-use Response;
 use Redirect;
+use Response;
 use Cms\Classes\Page;
+use ValidationException;
 use Cms\Classes\ComponentBase;
 use Winter\User\Models\UserGroup;
-use ValidationException;
+use Illuminate\Support\Facades\App;
+use Winter\Translate\Classes\Translator;
 
 /**
  * User session
@@ -97,8 +99,8 @@ class Session extends ComponentBase
             $redirectUrl = $this->controller->pageUrl($this->property('redirect'));
             return Redirect::guest($redirectUrl);
         }
-
-        $this->page['user'] = $this->user();
+        $user = $this->user();
+        $this->page['user'] = $user;
     }
 
     /**
@@ -115,7 +117,6 @@ class Session extends ComponentBase
         if (!Auth::isImpersonator()) {
             $user->touchLastSeen();
         }
-
         return $user;
     }
 

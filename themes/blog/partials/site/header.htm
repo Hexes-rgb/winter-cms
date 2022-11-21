@@ -5,21 +5,17 @@
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2 link-primary fs-4">Home</a></li>
-        {# <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li> #}
+        <li><a href="/" class="nav-link px-2 link-primary fs-4">{{ 'Home'|_ }}</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
     {% if not user%}
-        <a href="/signin" class="btn btn-outline-primary me-2">Sign-in</a>
-        <a href="/register" class="btn btn-primary">Sign-up</a>
+        <a href="/signin" class="btn btn-outline-primary me-2">{{ 'Sign-in'|_ }}</a>
+        <a href="/register" class="btn btn-primary">{{ 'Sign-up'|_ }}</a>
     {% else %}
-        <a href="/post/create" class="me-2 link link-primary text-decoration-none">Create new post</a>
+        <a href="/post/create" class="me-2 link link-primary text-decoration-none">{{ 'Create new post'|_ }}</a>
         <a href="/account" class="link link-primary text-decoration-none">{{ user.name }}</a>
-        <button type="button" id="logout" class="ms-1 btn btn-outline-danger">Log out</button>
+        <button type="button" id="logout" class="ms-1 btn btn-outline-danger">{{ 'Log out'|_ }}</button>
     {% endif %}
       </div>
     </header>

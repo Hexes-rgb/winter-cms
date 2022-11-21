@@ -1,15 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <form data-request="onUpdatePost" data-request-validate data-request-flash style="width: 20%;">
-                <span class="alert alert-danger" data-validate-for="title"></span>
-                <label for="title">Title</label>
+            <form data-request="onUpdatePost" data-request-validate data-request-flash style="width: 40%;">
+                <div class="alert alert-danger" data-validate-for="title"></div>
+                <label for="title">{{ 'Title'|_ }}</label>
                 <input id="title" class="" type="text" name="title" value="{{ post.title }}"/>
-                <span class="alert alert-danger" data-validate-for="text"></span>
+                <div class="alert alert-danger" data-validate-for="text"></div>
                 <input type="hidden" name="post_id" value="{{ post.id }}">
-                <label for="text">Text</label>
+                <label for="text">{{ 'Text'|_ }}</label>
                 <textarea id="text" class="" type="text" name="text" >{{ post.text }}</textarea>
-                <button data-attach-loading type="submit" class="btn btn-md btn-outline-primary">Update</button>
+                <button data-attach-loading type="submit" class="btn btn-md btn-outline-primary">{{ 'Update'|_ }}</button>
             </form>
         </div>
     </div>

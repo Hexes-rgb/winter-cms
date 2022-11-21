@@ -34,6 +34,7 @@ class User extends UserBase
         'username' => 'required|between:2,255|unique:users',
         'password' => 'required:create|between:8,255|confirmed',
         'password_confirmation' => 'required_with:password|between:8,255',
+        'locale' => 'required',
     ];
 
     /**
@@ -69,7 +70,8 @@ class User extends UserBase
         'password',
         'password_confirmation',
         'created_ip_address',
-        'last_ip_address'
+        'last_ip_address',
+        'locale'
     ];
 
     /**

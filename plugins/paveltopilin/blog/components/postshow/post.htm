@@ -6,16 +6,16 @@
 </div>
 <div class="row text-start">
     <div class="col-3">
-        Created at: {{ post.created_at }}
+        {{ 'Created at'|_ }}: {{ post.created_at }}
     </div>
     <div class="col-3">
-        Updated at: {{ post.updated_at }}
+        {{ 'Updated at'|_ }}: {{ post.updated_at }}
     </div>
     <div class="col-3">
-        Author: {{ post.author.name }}
+        {{ 'Author'|_ }}: {{ post.author.name }}
     </div>
     <div class="col-3">
-        Likes:
+        {{ 'Likes'|_ }}:
         {# {% if user %} #}
             <button
             data-request="onLike"

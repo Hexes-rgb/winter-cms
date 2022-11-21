@@ -3,7 +3,7 @@
 </div>
 <div class="container mt-3 w-75 border rounded">
     <div class="m-2">
-        Commentaries:
+        {{ 'Commentaries'|_ }}:
     </div>
     <div class="w-25">
         <form class="create-comment" data-type="comment">
@@ -12,7 +12,7 @@
             <div class="d-flex">
                 <input name="text" type="text" class="form-control" autocomplete="off"/>
                 <input name="post_id" value="{{ post.id }}" type="hidden"/>
-                <button type="submit" class="btn btn-outline-primary">Reply</button>
+                <button type="submit" class="btn btn-outline-primary">{{ 'Reply'|_ }}</button>
             </div>
         </form>
     </div>

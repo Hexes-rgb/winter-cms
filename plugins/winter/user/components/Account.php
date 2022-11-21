@@ -1,22 +1,27 @@
-<?php namespace Winter\User\Components;
+<?php
 
-use Lang;
+namespace Winter\User\Components;
+
 use Auth;
+use Lang;
 use Mail;
 use Event;
 use Flash;
 use Input;
 use Request;
 use Redirect;
+use Exception;
 use Validator;
+use Cms\Classes\Page;
 use ValidationException;
 use ApplicationException;
-use Winter\Storm\Auth\AuthException;
-use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
+use Illuminate\Support\Facades\App;
+use Winter\Storm\Auth\AuthException;
+use Winter\Storm\Support\Facades\DB;
+use Winter\Translate\Classes\Translator;
 use Winter\User\Models\User as UserModel;
 use Winter\User\Models\Settings as UserSettings;
-use Exception;
 
 /**
  * Account component
@@ -29,8 +34,8 @@ class Account extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => /*Account*/'winter.user::lang.account.account',
-            'description' => /*User management form.*/'winter.user::lang.account.account_desc'
+            'name'        => /*Account*/ 'winter.user::lang.account.account',
+            'description' => /*User management form.*/ 'winter.user::lang.account.account_desc'
         ];
     }
 
@@ -38,26 +43,26 @@ class Account extends ComponentBase
     {
         return [
             'redirect' => [
-                'title'       => /*Redirect to*/'winter.user::lang.account.redirect_to',
-                'description' => /*Page name to redirect to after update, sign in or registration.*/'winter.user::lang.account.redirect_to_desc',
+                'title'       => /*Redirect to*/ 'winter.user::lang.account.redirect_to',
+                'description' => /*Page name to redirect to after update, sign in or registration.*/ 'winter.user::lang.account.redirect_to_desc',
                 'type'        => 'dropdown',
                 'default'     => ''
             ],
             'paramCode' => [
-                'title'       => /*Activation Code Param*/'winter.user::lang.account.code_param',
+                'title'       => /*Activation Code Param*/ 'winter.user::lang.account.code_param',
                 'description' => /*The page URL parameter used for the registration activation code*/ 'winter.user::lang.account.code_param_desc',
                 'type'        => 'string',
                 'default'     => 'code'
             ],
             'forceSecure' => [
-                'title'       => /*Force secure protocol*/'winter.user::lang.account.force_secure',
-                'description' => /*Always redirect the URL with the HTTPS schema.*/'winter.user::lang.account.force_secure_desc',
+                'title'       => /*Force secure protocol*/ 'winter.user::lang.account.force_secure',
+                'description' => /*Always redirect the URL with the HTTPS schema.*/ 'winter.user::lang.account.force_secure_desc',
                 'type'        => 'checkbox',
                 'default'     => 0
             ],
             'requirePassword' => [
-                'title'       => /*Confirm password on update*/'winter.user::lang.account.update_requires_password',
-                'description' => /*Require the current password of the user when changing their profile.*/'winter.user::lang.account.update_requires_password_comment',
+                'title'       => /*Confirm password on update*/ 'winter.user::lang.account.update_requires_password',
+                'description' => /*Require the current password of the user when changing their profile.*/ 'winter.user::lang.account.update_requires_password_comment',
                 'type'        => 'checkbox',
                 'default'     => 0
             ],
@@ -66,7 +71,7 @@ class Account extends ComponentBase
 
     public function getRedirectOptions()
     {
-        return [''=>'- refresh page -', '0' => '- no redirect -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
+        return ['' => '- refresh page -', '0' => '- no redirect -'] + Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
     /**
@@ -75,6 +80,7 @@ class Account extends ComponentBase
     public function prepareVars()
     {
         $this->page['user'] = $this->user();
+        $this->page['locales'] = $this->locales();
         $this->page['canRegister'] = $this->canRegister();
         $this->page['loginAttribute'] = $this->loginAttribute();
         $this->page['loginAttributeLabel'] = $this->loginAttributeLabel();
@@ -102,6 +108,8 @@ class Account extends ComponentBase
         }
 
         $this->prepareVars();
+        // $this->page['locales'] = $this->locales();
+        // dd($this->page['locales']);
     }
 
     //
@@ -118,6 +126,11 @@ class Account extends ComponentBase
         }
 
         return Auth::getUser();
+    }
+
+    public function locales()
+    {
+        return DB::table('winter_translate_locales')->select('id', 'code', 'name')->get();
     }
 
     /**
@@ -141,9 +154,10 @@ class Account extends ComponentBase
      */
     public function loginAttributeLabel()
     {
-        return Lang::get($this->loginAttribute() == UserSettings::LOGIN_EMAIL
-            ? /*Email*/'winter.user::lang.login.attribute_email'
-            : /*Username*/'winter.user::lang.login.attribute_username'
+        return Lang::get(
+            $this->loginAttribute() == UserSettings::LOGIN_EMAIL
+                ? /*Email*/ 'winter.user::lang.login.attribute_email'
+                : /*Username*/ 'winter.user::lang.login.attribute_username'
         );
     }
 
@@ -211,7 +225,6 @@ class Account extends ComponentBase
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
-
             /*
              * Authenticate user
              */
@@ -249,15 +262,15 @@ class Account extends ComponentBase
             if ($ipAddress = Request::ip()) {
                 $user->touchIpAddress($ipAddress);
             }
-
+            $translator = Translator::instance();
+            $translator->setLocale($user->locale);
             /*
              * Redirect
              */
             if ($redirect = $this->makeRedirection(true)) {
                 return $redirect;
             }
-        }
-        catch (Exception $ex) {
+        } catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
@@ -281,6 +294,8 @@ class Account extends ComponentBase
              * Validate input
              */
             $data = post();
+
+            // dd($data);
 
             if (!array_key_exists('password_confirmation', $data)) {
                 $data['password_confirmation'] = post('password');
@@ -341,14 +356,15 @@ class Account extends ComponentBase
                 Auth::login($user);
             }
 
+            $translator = Translator::instance();
+            $translator->setLocale($user->locale);
             /*
              * Redirect to the intended page after successful sign in
              */
             if ($redirect = $this->makeRedirection(true)) {
                 return $redirect;
             }
-        }
-        catch (Exception $ex) {
+        } catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
@@ -393,9 +409,7 @@ class Account extends ComponentBase
              * Sign in the user
              */
             Auth::login($user);
-
-        }
-        catch (Exception $ex) {
+        } catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
@@ -437,6 +451,8 @@ class Account extends ComponentBase
         /*
          * Redirect
          */
+        $translator = Translator::instance();
+        $translator->setLocale($user->locale);
         if ($redirect = $this->makeRedirection()) {
             return $redirect;
         }
@@ -487,9 +503,7 @@ class Account extends ComponentBase
             Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'winter.user::lang.account.activation_email_sent'));
 
             $this->sendActivationEmail($user);
-
-        }
-        catch (Exception $ex) {
+        } catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
             else Flash::error($ex->getMessage());
         }
@@ -518,8 +532,7 @@ class Account extends ComponentBase
 
         if ($pageName = $this->property('activationPage')) {
             $url = $this->pageUrl($pageName, $params);
-        }
-        else {
+        } else {
             $url = $this->currentPageUrl($params);
         }
 
@@ -547,7 +560,7 @@ class Account extends ComponentBase
             'code' => $code
         ];
 
-        Mail::send('winter.user::mail.activate', $data, function($message) use ($user) {
+        Mail::send('winter.user::mail.activate', $data, function ($message) use ($user) {
             $message->to($user->email, $user->name);
         });
     }
