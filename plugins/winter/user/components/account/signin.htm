@@ -1,4 +1,4 @@
-{{ form_ajax('onSignin') }}
+{{ form_ajax('onSignin', { data:{ 'redirect': '/'} })  }}
 
     <div class="form-group">
         <label for="userSigninLogin">{{ loginAttributeLabel }}</label>
@@ -28,6 +28,6 @@
     </div>
     {% endif %}
 
-    <button type="submit" class="btn btn-default">{{ 'Sign in'|_ }}</button>
+    <button data-request-data="redirect: '/'" type="submit" class="btn btn-primary">{{ 'Sign in'|_ }}</button>
 
 {{ form_close() }}

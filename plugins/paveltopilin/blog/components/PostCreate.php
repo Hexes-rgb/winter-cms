@@ -4,8 +4,10 @@ namespace PavelTopilin\Blog\Components;
 
 use Winter\User\Facades\Auth;
 use Cms\Classes\ComponentBase;
+use Illuminate\Http\Client\Request;
 use PavelTopilin\Blog\Models\Post;
 use Winter\Storm\Support\Facades\Flash;
+use Winter\Storm\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Winter\Storm\Support\Facades\Validator;
 use Winter\Storm\Exception\ValidationException;
@@ -33,10 +35,11 @@ class PostCreate extends ComponentBase
 
     public function onCreatePost()
     {
-        $data = post();
+        $data = Input::all();
         $rules = [
             'title' => 'required|min:3|max:200',
             'text' => 'required|min:3',
+            'photo' => 'image'
         ];
         $validation = Validator::make($data, $rules);
         if ($validation->fails()) {
@@ -51,6 +54,10 @@ class PostCreate extends ComponentBase
             'text' => $text,
             'user_id' => $user->id,
         ]);
+        $photo = $data['photo'];
+        if ($photo) {
+            $post->photo()->create(['data' => $photo]);
+        }
         return Redirect::to('/post/' . $post->id . '/edit');
     }
 }

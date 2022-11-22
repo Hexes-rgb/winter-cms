@@ -4,7 +4,9 @@ namespace PavelTopilin\Blog\Models;
 
 use Model;
 use Carbon\Carbon;
+use System\Models\File;
 use Winter\User\Models\User;
+use Winter\User\Facades\Auth;
 use PavelTopilin\Blog\Models\Tag;
 use PavelTopilin\Blog\Models\Comment;
 
@@ -29,6 +31,10 @@ class Post extends Model
      * @var array Validation rules
      */
     public $rules = [];
+
+    public $attachOne = [
+        'photo' => File::class
+    ];
 
     /**
      * @var array Attribute names to encode and decode using JSON.

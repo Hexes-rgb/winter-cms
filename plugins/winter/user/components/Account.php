@@ -46,7 +46,7 @@ class Account extends ComponentBase
                 'title'       => /*Redirect to*/ 'winter.user::lang.account.redirect_to',
                 'description' => /*Page name to redirect to after update, sign in or registration.*/ 'winter.user::lang.account.redirect_to_desc',
                 'type'        => 'dropdown',
-                'default'     => ''
+                'default'     => '/'
             ],
             'paramCode' => [
                 'title'       => /*Activation Code Param*/ 'winter.user::lang.account.code_param',
@@ -93,7 +93,7 @@ class Account extends ComponentBase
      */
     public function onRun()
     {
-        /*
+        /*/
          * Redirect to HTTPS checker
          */
         if ($redirect = $this->redirectForceSecure()) {
@@ -447,12 +447,12 @@ class Account extends ComponentBase
         }
 
         Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'winter.user::lang.account.success_saved')));
+        $translator = Translator::instance();
+        $translator->setLocale($user->locale);
 
         /*
          * Redirect
          */
-        $translator = Translator::instance();
-        $translator->setLocale($user->locale);
         if ($redirect = $this->makeRedirection()) {
             return $redirect;
         }

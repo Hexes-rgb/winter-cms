@@ -1,14 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <form data-request="onCreatePost" data-request-validate data-request-flash style="width: 40%;">
+            <form class="d-grid" data-request="onCreatePost" data-request-validate data-request-flash data-request-files>
                 <div class="alert alert-danger" data-validate-for="title"></div>
                 <label for="title">{{ 'Title'|_ }}</label>
                 <input id="title" class="" type="text" name="title"/>
                 <div class="alert alert-danger" data-validate-for="text"></div>
                 <label for="text">{{ 'Text'|_ }}</label>
                 <textarea id="text" class="" type="text" name="text"></textarea>
-                <button data-attach-loading type="submit" class="btn btn-md btn-outline-primary">{{ 'Create'|_ }}</button>
+                <div class="alert alert-danger" data-validate-for="photos"></div>
+                    <input id="photos" name="photo" type="file"/>
+                <button data-attach-loading type="submit" class="mt-2 btn btn-md btn-outline-primary">{{ 'Create'|_ }}</button>
             </form>
         </div>
     </div>

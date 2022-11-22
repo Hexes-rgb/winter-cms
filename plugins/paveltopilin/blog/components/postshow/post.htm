@@ -16,7 +16,7 @@
     </div>
     <div class="col-3">
         {{ 'Likes'|_ }}:
-        {# {% if user %} #}
+        {% if canLike %}
             <button
             data-request="onLike"
             class="bg-white border-0"
@@ -24,10 +24,12 @@
             data-request-data="post_id: {{ post.id }}">
                 <img src="/themes/blog/assets/images/like.png" width="25px">
             </button>
-        {# {% else %}
+        {% else %}
             <img src="/themes/blog/assets/images/like.png" width="25px">
-        {% endif %} #}
+        {% endif %}
         {{ post.getLikesCount() }}
     </div>
 </div>
-
+    {% if canEdit %}
+        <a href="/post/{{ post.id }}/edit" class="btn btn-outline-primary">Edit post</a>
+    {% endif %}

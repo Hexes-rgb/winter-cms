@@ -36,10 +36,23 @@ class PostShow extends ComponentBase
         return [];
     }
 
-    public function onRun()
+    public function prepareVars()
     {
         $post_id = $this->param('post_id');
-        $this->page['post'] = Post::findOrFail($post_id);
+        $post = Post::findOrFail($post_id);
+        $this->page['post'] = $post;
+        if (Auth::getUser()) {
+            $this->page['canEdit'] = $post->author->id == Auth::getUser()->id;
+            $this->page['canLike'] = true;
+        } else {
+            $this->page['canEdit'] = false;
+            $this->page['canLike'] = false;
+        }
+    }
+
+    public function onRun()
+    {
+        $this->prepareVars();
     }
 
     public function onLike()
@@ -57,7 +70,7 @@ class PostShow extends ComponentBase
             $post->likes->find($user->id)->pivot->save();
         }
         $post->load('likes');
-        $this->page['post'] = $post;
+        $this->prepareVars();
     }
 
     public function onCreateComment()

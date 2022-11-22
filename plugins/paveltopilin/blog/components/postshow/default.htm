@@ -5,14 +5,14 @@
     <div class="m-2">
         {{ 'Commentaries'|_ }}:
     </div>
-    <div class="w-25">
+    <div class="w-50">
         <form class="create-comment" data-type="comment">
             <div class="alert alert-danger" style="display: none">
             </div>
             <div class="d-flex">
                 <input name="text" type="text" class="form-control" autocomplete="off"/>
                 <input name="post_id" value="{{ post.id }}" type="hidden"/>
-                <button type="submit" class="btn btn-outline-primary">{{ 'Reply'|_ }}</button>
+                <button type="submit" class="ms-2 btn btn-outline-primary">{{ 'Reply'|_ }}</button>
             </div>
         </form>
     </div>
