@@ -9,11 +9,18 @@ scopes:
         type: daterange
         conditions: created_at >= ':after' AND created_at <= ':before'
     deleted:
-        # Filter name
         label: Deleted
-        # Filter type
         type: switch
-        # SQL conditions
         conditions:
             - deleted_at is null
             - deleted_at is not null
+    author:
+        label: Author
+        modelClass: Winter\User\Models\User
+        conditions: user_id in (:filtered)
+        nameFrom: name
+    tags:
+        label: Tag
+        modelClass: PavelTopilin\Blog\Models\Tag
+        scope: FilterTags
+        nameFrom: name

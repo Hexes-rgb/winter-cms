@@ -29,6 +29,7 @@
         {% endif %}
         {{ post.getLikesCount() }}
     </div>
+    <img src="{{ image }}">
 </div>
     {% if canEdit %}
         <a href="/post/{{ post.id }}/edit" class="btn btn-outline-primary">Edit post</a>

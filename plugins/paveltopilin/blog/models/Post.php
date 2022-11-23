@@ -32,7 +32,7 @@ class Post extends Model
      */
     public $rules = [];
 
-    public $attachOne = [
+    public $attachMany = [
         'photo' => File::class
     ];
 
@@ -65,5 +65,12 @@ class Post extends Model
     public function scopeDailyPosts($query)
     {
         $query->where('created_at', '>', Carbon::now()->subDays(1));
+    }
+
+    public function scopeFilterTags($query, $tags)
+    {
+        return $query->whereHas('tags', function ($q) use ($tags) {
+            $q->withoutGlobalScope(NestedTreeScope::class)->whereIn('id', $tags);
+        });
     }
 }

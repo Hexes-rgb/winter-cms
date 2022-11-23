@@ -36,6 +36,8 @@ class PostCreate extends ComponentBase
     public function onCreatePost()
     {
         $data = Input::all();
+        // $photo = Input::file('photo');
+        dd($data);
         $rules = [
             'title' => 'required|min:3|max:200',
             'text' => 'required|min:3',
