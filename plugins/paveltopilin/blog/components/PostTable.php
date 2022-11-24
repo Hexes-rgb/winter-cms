@@ -33,8 +33,6 @@ class PostTable extends ComponentBase
 
     public function prepareVars()
     {
-        // $this->page['posts'] = Post::paginate(3);
-        // $this->page['posts'] = Session::get('posts');
         $this->page['authors'] = User::all();
         $this->page['tags'] = Tag::all();
     }
@@ -48,19 +46,14 @@ class PostTable extends ComponentBase
     public function onFilter()
     {
         $authors = DB::table('users')->pluck('id')->toArray();
-        // $tags = DB::table('paveltopilin_blog_tags')->pluck('id')->toArray();
         $tags = [];
 
         if (Session::get('filters') != []) {
             $filters = Session::pull('filters');
         }
-        // dd(Request::all());
-        // if (Request::except('page') != []) {
-        //     $filters = array();
-        //     array_push($filters, $authors, $tags);
-        // } else {
-        $filters = Request::except('page');
-        // }
+        if (Request::except('page') != []) {
+            $filters = Request::except('page');
+        }
 
         if (isset($filters['authors'])) {
             $authors = $filters['authors'];
@@ -70,7 +63,7 @@ class PostTable extends ComponentBase
             $tags = $filters['tags'];
             $tags = array_map('intval', $tags);
         }
-        // dd($filters);
+
         $posts = Post::when($authors, function ($query, $authors) {
             return $query->whereIn('user_id', $authors);
         })->when($tags, function ($query, $tags) {

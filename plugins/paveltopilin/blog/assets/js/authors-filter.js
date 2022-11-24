@@ -1,5 +1,7 @@
 let authors = []
-
+if(localStorage.getItem('authors') !== null){
+    authors = JSON.parse(localStorage.getItem('authors'));
+};
 changeAuthorsColor(authors);
 
 $(document).on('click', '#authorFilter', function(){

@@ -1,5 +1,7 @@
 let tags = []
-
+if(localStorage.getItem('tags') !== null){
+    tags = JSON.parse(localStorage.getItem('tags'));
+};
 changeTagsColor(tags);
 
 $(document).on('click', '#tagFilter', function(){
