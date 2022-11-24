@@ -1,0 +1,35 @@
+<div id="table" class="mt-2 container justify-content-center">
+    <table width="1500px" class="table table-bordered">
+        <tr class="text-start">
+            <th>ID</th>
+            <th class="ms-2">Title</th>
+            <th class="ms-2">Text</th>
+            <th class="ms-2">Author</th>
+            <th class="ms-2">Tags</th>
+            <th class="ms-2">Created At</th>
+            <th class="ms-2">Updated</th>
+        </tr>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.text }}</td>
+                <td>{{ post.author.name }}</td>
+                <td>
+                    {% for tag in post.tags %}
+                        {% if post.tags.last.id == tag.id %}
+                            {{ tag.name }}
+                        {% else %}
+                            {{ tag.name }},
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ post.created_at }}</td>
+                <td>{{ post.updated_at }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="mt-5 d-flex justify-content-center">
+        {{ posts.render|raw }}
+    </div>
+</div>

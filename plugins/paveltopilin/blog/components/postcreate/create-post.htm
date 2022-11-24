@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            {# <form class="d-grid" data-request="onCreatePost" data-request-validate data-request-flash data-request-files> #}
-            <form class="d-grid" id="createPost" >
+            {# <form class="d-grid" method="POST" action="/post" enctype='multipart/form-data'> #}
+            <form class="d-grid" data-request="onCreatePost" data-request-files>
                 {# <div class="alert alert-danger" data-validate-for="title"></div> #}
                 <label for="title">{{ 'Title'|_ }}</label>
                 <input id="title" class="" type="text" name="title"/>
@@ -10,8 +10,9 @@
                 <label for="text">{{ 'Text'|_ }}</label>
                 <textarea id="text" class="" type="text" name="text"></textarea>
                 {# <div class="alert alert-danger" data-validate-for="photos"></div> #}
-                <input id="photos" name="photos[]" type="file" multiple/>
-                <button data-attach-loading type="submit" class="mt-2 btn btn-md btn-outline-primary">{{ 'Create'|_ }}</button>
+                <input id="photos" name="photos[]" type="file" multiple='multiple'/>
+                {# <input name="posting-image[]" type="file" multiple="multiple" /> #}
+                <button type="submit" class="mt-2 btn btn-md btn-outline-primary">{{ 'Create'|_ }}</button>
             </form>
         </div>
     </div>

@@ -1,0 +1,26 @@
+<div class="container border rounded d-flex">
+    <div>
+        <button id="authorFilter" class="btn btn-default">Author</button>
+        <div id="authorMenu" class="border" style="display: block">
+            {% for author in authors %}
+                {# <a id="{{ author.id }}" class="text-decoration-none"> #}
+                    <p id="author{{ author.id }}" author-id="{{ author.id }}" class="author">{{ author.name }}</p>
+                {# </a> #}
+            {% endfor %}
+            <button id="authorsApply" class="btn btn-sm btn-default">Apply</button>
+            <button id="authorsClear" class="btn btn-sm btn-default">Clear</button>
+        </div>
+    </div>
+    <div class="ms-3">
+        <button id="tagFilter" class="btn btn-default">Tag</button>
+        <div id="tagMenu" class="border" style="display: block">
+            {% for tag in tags %}
+                {# <a id="{{ author.id }}" class="text-decoration-none"> #}
+                    <p id="tag{{ tag.id }}" tag-id="{{ tag.id }}" class="tag">{{ tag.name }}</p>
+                {# </a> #}
+            {% endfor %}
+            <button id="tagsApply" class="btn btn-sm btn-default">Apply</button>
+            <button id="tagsClear" class="btn btn-sm btn-default">Clear</button>
+        </div>
+    </div>
+</div>

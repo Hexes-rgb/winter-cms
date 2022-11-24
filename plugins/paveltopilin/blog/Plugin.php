@@ -14,6 +14,7 @@ class Plugin extends PluginBase
             \PavelTopilin\Blog\Components\PostShow::class       => 'postShow',
             \PavelTopilin\Blog\Components\PostCreate::class       => 'postCreate',
             \PavelTopilin\Blog\Components\PostUpdate::class       => 'postUpdate',
+            \PavelTopilin\Blog\Components\PostTable::class       => 'postTable',
         ];
     }
 

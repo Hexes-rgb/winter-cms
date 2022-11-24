@@ -41,9 +41,9 @@ class PostShow extends ComponentBase
         $post_id = $this->param('post_id');
         $post = Post::findOrFail($post_id);
         $this->page['post'] = $post;
-        if ($post->photo) {
-            $this->page['image'] = $post->photo->getPath();
-        }
+        // if ($post->photo) {
+        //     $this->page['image'] = $post->photo->getPath();
+        // }
         if (Auth::getUser()) {
             $this->page['canEdit'] = $post->author->id == Auth::getUser()->id;
             $this->page['canLike'] = true;

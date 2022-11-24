@@ -4,8 +4,8 @@ namespace PavelTopilin\Blog\Components;
 
 use Winter\User\Facades\Auth;
 use Cms\Classes\ComponentBase;
-use Illuminate\Http\Client\Request;
 use PavelTopilin\Blog\Models\Post;
+use Illuminate\Support\Facades\Request;
 use Winter\Storm\Support\Facades\Flash;
 use Winter\Storm\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -35,7 +35,7 @@ class PostCreate extends ComponentBase
 
     public function onCreatePost()
     {
-        $data = Input::all();
+        $data = Request::allFiles();
         // $photo = Input::file('photo');
         dd($data);
         $rules = [
