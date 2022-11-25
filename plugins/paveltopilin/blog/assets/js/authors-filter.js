@@ -16,18 +16,13 @@ $(document).on('click', '.author', function(){
     } else {
         authors.push(id);
     }
-    console.log(authors);
     changeAuthorsColor(authors);
 })
-
-$(document).on('click', '#authorsApply', function(){
-    sendRequest(authors, tags);
-});
 
 $(document).on('click', '#authorsClear', function(){
     authors.splice(0, authors.length);
     changeAuthorsColor(authors);
-    sendRequest(authors, tags);
+    prepareData();
 });
 
 async function changeAuthorsColor(author){

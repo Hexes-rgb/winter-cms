@@ -1,13 +1,13 @@
 <div id="table" class="mt-2 container justify-content-center">
     <table width="1500px" class="table table-bordered">
         <tr class="text-start">
-            <th>ID</th>
-            <th class="ms-2">Title</th>
-            <th class="ms-2">Text</th>
-            <th class="ms-2">Author</th>
-            <th class="ms-2">Tags</th>
-            <th class="ms-2">Created At</th>
-            <th class="ms-2">Updated</th>
+            <th><button column="id" class="btn btn-default sort">ID</button></th>
+            <th class="ms-2"><button column="title" class="btn btn-default sort">Title</button></th>
+            <th class="ms-2"><button column="text" class="btn btn-default sort">Text</button></th>
+            <th class="ms-2"><button column="author" class="btn btn-default sort">Author</button></th>
+            <th class="ms-2"><button column="tags" class="btn btn-default sort">Tags</th>
+            <th class="ms-2"><button column="created_at" class="btn btn-default sort">Created At</button></th>
+            <th class="ms-2"><button column="updated_at" class="btn btn-default sort">Updated At</button></th>
         </tr>
         {% for post in posts %}
             <tr>

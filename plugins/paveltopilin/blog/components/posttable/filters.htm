@@ -7,7 +7,7 @@
                     <p id="author{{ author.id }}" author-id="{{ author.id }}" class="author">{{ author.name }}</p>
                 {# </a> #}
             {% endfor %}
-            <button id="authorsApply" class="btn btn-sm btn-default">Apply</button>
+            <button class="btn btn-sm btn-default apply">Apply</button>
             <button id="authorsClear" class="btn btn-sm btn-default">Clear</button>
         </div>
     </div>
@@ -19,8 +19,19 @@
                     <p id="tag{{ tag.id }}" tag-id="{{ tag.id }}" class="tag">{{ tag.name }}</p>
                 {# </a> #}
             {% endfor %}
-            <button id="tagsApply" class="btn btn-sm btn-default">Apply</button>
+            <button class="btn btn-sm btn-default apply">Apply</button>
             <button id="tagsClear" class="btn btn-sm btn-default">Clear</button>
         </div>
     </div>
+        <div class="ms-3">
+            <button id="createdAtFilter" class="btn btn-default">Created at</button>
+            <div id="createdAtMenu" class="border d-grid" style="display: block">
+                After
+                <input type="date" id="afterCreatedAt" placeholder="After" autocomplete="off">
+                Before
+                <input type="date" id="beforeCreatedAt" placeholder="Before" autocomplete="off">
+            </div>
+            <button class="btn btn-sm btn-default apply">Apply</button>
+            <button id="createdAtClear" class="btn btn-sm btn-default">Clear</button>
+        </div>
 </div>

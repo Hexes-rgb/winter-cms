@@ -20,15 +20,10 @@ $(document).on('click', '.tag', function(){
     changeTagsColor(tags);
 })
 
-$(document).on('click', '#tagsApply', function(){
-    sendRequest(authors, tags);
-});
-
 $(document).on('click', '#tagsClear', function(){
     tags.splice(0, tags.length);
     changeTagsColor(tags);
-    sendRequest(authors, tags);
-    console.log(tags);
+    prepareData();
 });
 
 async function changeTagsColor(tags){

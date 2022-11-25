@@ -117,6 +117,8 @@ class Session extends ComponentBase
         if (!Auth::isImpersonator()) {
             $user->touchLastSeen();
         }
+        $translator = Translator::instance();
+        $translator->setLocale($user->locale);
         return $user;
     }
 
