@@ -1,0 +1,5 @@
+<div id="tags" class="overflow-scroll" style="height: 130px">
+    {% for tag in tags %}
+        <p id="tag{{ tag.id }}" tag-id="{{ tag.id }}" class="tag">{{ tag.name }}</p>
+    {% endfor %}
+</div>

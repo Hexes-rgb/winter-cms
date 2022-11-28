@@ -35,9 +35,7 @@ class PostCreate extends ComponentBase
 
     public function onCreatePost()
     {
-        $data = Request::allFiles();
-        // $photo = Input::file('photo');
-        dd($data);
+        $data = Request::all();
         $rules = [
             'title' => 'required|min:3|max:200',
             'text' => 'required|min:3',
@@ -56,7 +54,7 @@ class PostCreate extends ComponentBase
             'text' => $text,
             'user_id' => $user->id,
         ]);
-        $photo = $data['photo'];
+        $photo = $data['photo'] ?? false;
         if ($photo) {
             $post->photo()->create(['data' => $photo]);
         }

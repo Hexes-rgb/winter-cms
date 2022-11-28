@@ -40,80 +40,81 @@ class PostTable extends ComponentBase
 
     public function onRun()
     {
-        $this->prepareVars();
+        // $this->prepareVars();
         $this->onFilter();
+        $this->onGetAuthors();
+        $this->onGetTags();
+    }
+
+    public function onGetAuthors()
+    {
+        $authorSearch = (empty(Request::only('authorSearch'))) ? Session::get('authorSearch') : Request::only('authorSearch');
+        $authors = User::when(
+            (empty($authorSearch['authorSearch'])) ? false : $authorSearch['authorSearch'],
+            function ($query, $text) {
+                $query->where('name', 'LIKE', '%' . $text . '%');
+            }
+        )->get();
+        Session::put('authorSearch', $authorSearch);
+        $this->page['authors'] = $authors;
+        return response()->json(['partial' => $this->renderPartial('postTable::authors')]);
+    }
+
+    public function onGetTags()
+    {
+        $filtersMenu = (empty(Request::only('tagSearch'))) ? Session::get('tagSearch') : Request::only('tagSearch');
+        $tags = Tag::when(
+            (empty($filtersMenu['tagSearch'])) ? false : $filtersMenu['tagSearch'],
+            function ($query, $text) {
+                $query->where('name', 'LIKE', '%' . $text . '%');
+            }
+        )->get();
+        $this->page['tags'] = $tags;
+        Session::put('tagSearch', $filtersMenu);
+        return response()->json(['partial' => $this->renderPartial('postTable::tags')]);
     }
 
     public function onFilter()
     {
-        $authors = DB::table('users')->pluck('id')->toArray();
-        $tags = [];
-        $text = "";
-        $afterCreated = Carbon::createFromTimestamp(0)->toDateString();
-        $beforeCreated = Carbon::create(2038, 1, 19, 3, 14, 7);
-        $sort = ['id', 'asc'];
-        $authorsSort = ['name', 'asc'];
-        $filters = array();
+        $filters = (empty(Request::only('filters')['filters'])) ? Session::pull('filters') : Request::only('filters')['filters'];
 
-        // dd(Request::all());
-        if (Session::get('filters') != []) {
-            $filters = Session::pull('filters');
-        }
-
-        if (Request::except('page') != []) {
-            $filters = Request::except('page');
-        }
-
-        if (isset($filters['authors'])) {
-            $authors = $filters['authors'];
-            $authors = array_map('intval', $authors);
-        }
-        if (isset($filters['tags'])) {
-            $tags = $filters['tags'];
-            $tags = array_map('intval', $tags);
-        }
-        if (isset($filters['query'])) {
-            $text = $filters['query'];
-        }
-        if (isset($filters['afterCreated'])) {
-            $afterCreated = $filters['afterCreated'];
-        }
-        if (isset($filters['beforeCreated'])) {
-            $beforeCreated = $filters['beforeCreated'];
-        }
-        if (isset($filters['sort'])) {
-            $sort = $filters['sort'];
-            if ($sort[0] == 'author') {
-                $authorsSort = ['name', $sort[1]];
-                $sort = null;
-            } else {
-                if ($sort[1] == "") {
-                    $sort = null;
-                }
-            }
-        }
-
-        $posts = Post::when($text, function ($query, $text) {
+        $posts = Post::when(
+            (empty($filters['text'])) ? false : $filters['text'],
+            function ($query, $text) {
                 return $query->where('title', 'LIKE', '%' . $text . '%');
-            })->when($authors, function ($query, $authors) {
+            }
+        )->when(
+            (empty($filters['authors'])) ? false : $filters['authors'],
+            function ($query, $authors) {
                 return $query->whereIn('user_id', $authors);
-            })->when($tags, function ($query, $tags) {
+            }
+        )->when(
+            (empty($filters['tags'])) ? false : $filters['tags'],
+            function ($query, $tags) {
                 return $query->whereHas('tags', function ($query) use ($tags) {
                     $query->whereIn('id', $tags);
                 });
-            })->when($afterCreated, function ($query, $afterCreated) {
+            }
+        )->when(
+            (empty($filters['afterCreated'])) ? false : $filters['afterCreated'],
+            function ($query, $afterCreated) {
                 return $query->where('created_at', '>', $afterCreated);
-            })->when($beforeCreated, function ($query, $beforeCreated) {
+            }
+        )->when(
+            (empty($filters['beforeCreated'])) ? false : $filters['beforeCreated'],
+            function ($query, $beforeCreated) {
                 return $query->where('created_at', '<', $beforeCreated);
-            })->when($sort, function ($query, $sort) {
+            }
+        )->when(
+            (empty($filters['sort'])) ? false : $filters['sort'],
+            function ($query, $sort) {
+                if (empty($sort[1])) {
+                    return;
+                }
                 return $query->orderBy($sort[0], $sort[1]);
-            })
-            // ->when($authorsSort, function ($query, $authorsSort) {
-            //     return $query->orderBy('name', $authorsSort[1]);
-            // })
-            // ->toSql();
-            ->paginate(3);
-        // ->get();
+            }
+        )
+            ->paginate(5);
         $this->page['posts'] = $posts;
         Session::put('filters', $filters);
         return response()->json(['partial' => $this->renderPartial('postTable::posts-table')]);

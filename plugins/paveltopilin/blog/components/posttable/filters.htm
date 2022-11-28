@@ -1,37 +1,35 @@
-<div class="container border rounded d-flex">
+<div class="container border rounded d-flex bg-light">
     <div>
         <button id="authorFilter" class="btn btn-default">Author</button>
-        <div id="authorMenu" class="border" style="display: block">
-            {% for author in authors %}
-                {# <a id="{{ author.id }}" class="text-decoration-none"> #}
-                    <p id="author{{ author.id }}" author-id="{{ author.id }}" class="author">{{ author.name }}</p>
-                {# </a> #}
-            {% endfor %}
-            <button class="btn btn-sm btn-default apply">Apply</button>
+        <div id="authorMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute; width: 220px">
+            <input class="form-control" id="searchAuthors" type="text" autocomplete="off" style="width: 100%"/>
+            {% partial 'postTable::authors' %}
+            <button id="authorsApply" class="btn btn-sm btn-default apply">Apply</button>
+            <button id="selectAllAuthors" class="btn btn-sm btn-default">Select all</button>
             <button id="authorsClear" class="btn btn-sm btn-default">Clear</button>
         </div>
     </div>
-    <div class="ms-3">
+    <div style="margin-left: 15%;">
         <button id="tagFilter" class="btn btn-default">Tag</button>
-        <div id="tagMenu" class="border" style="display: block">
-            {% for tag in tags %}
-                {# <a id="{{ author.id }}" class="text-decoration-none"> #}
-                    <p id="tag{{ tag.id }}" tag-id="{{ tag.id }}" class="tag">{{ tag.name }}</p>
-                {# </a> #}
-            {% endfor %}
-            <button class="btn btn-sm btn-default apply">Apply</button>
+        <div id="tagMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute;width: 220px">
+            <input class="form-control" id="searchTags" type="text" autocomplete="off" style="width: 100%"/>
+            {% partial 'postTable::tags' %}
+            <button id="tagsApply" class="btn btn-sm btn-default apply">Apply</button>
+            <button id="selectAllTags" class="btn btn-sm btn-default">Select all</button>
             <button id="tagsClear" class="btn btn-sm btn-default">Clear</button>
         </div>
     </div>
-        <div class="ms-3">
+        <div style="margin-left: 15%;">
             <button id="createdAtFilter" class="btn btn-default">Created at</button>
-            <div id="createdAtMenu" class="border d-grid" style="display: block">
-                After
-                <input type="date" id="afterCreatedAt" placeholder="After" autocomplete="off">
-                Before
-                <input type="date" id="beforeCreatedAt" placeholder="Before" autocomplete="off">
+            <div id="createdAtMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute;">
+                <div class="d-grid">
+                    After
+                    <input type="date" id="afterCreatedAt" placeholder="After" autocomplete="off">
+                    Before
+                    <input type="date" id="beforeCreatedAt" placeholder="Before" autocomplete="off">
+                </div>
+                <button id="createdAtApply" class="btn btn-sm btn-default apply">Apply</button>
+                <button id="createdAtClear" class="btn btn-sm btn-default">Clear</button>
             </div>
-            <button class="btn btn-sm btn-default apply">Apply</button>
-            <button id="createdAtClear" class="btn btn-sm btn-default">Clear</button>
         </div>
 </div>
