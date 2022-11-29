@@ -2,12 +2,12 @@
     <table width="1500px" class="table table-bordered">
         <tr class="text-start">
             <th><button id="id" column="id" class="btn btn-default sort">ID</button></th>
-            <th class="ms-2"><button id="title" column="title" class="btn btn-default sort">Title</button></th>
-            <th class="ms-2"><button id="text" column="text" class="btn btn-default sort">Text</button></th>
-            <th class="ms-2"><button column="author" class="btn btn-default">Author</button></th>
-            <th class="ms-2"><button column="tags" class="btn btn-default">Tags</button></th>
-            <th class="ms-2"><button id="created_at" column="created_at" class="btn btn-default sort">Created At</button></th>
-            <th class="ms-2"><button id="updated_at" column="updated_at" class="btn btn-default sort">Updated At</button></th>
+            <th class="ms-2"><button id="title" column="title" class="btn btn-default sort">{{'Title'|_}}</button></th>
+            <th class="ms-2"><button id="text" column="text" class="btn btn-default sort">{{"Text"|_}}</button></th>
+            <th class="ms-2"><button column="author" class="btn btn-default">{{'Author'|_}}</button></th>
+            <th class="ms-2"><button column="tags" class="btn btn-default">{{'Tags'|_}}</button></th>
+            <th class="ms-2"><button id="created_at" column="created_at" class="btn btn-default sort">{{'Created At'|_}}</button></th>
+            <th class="ms-2"><button id="updated_at" column="updated_at" class="btn btn-default sort">{{'Updated At'|_}}</button></th>
         </tr>
         {% for post in posts %}
             <tr>

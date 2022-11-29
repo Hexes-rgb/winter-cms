@@ -1,35 +1,55 @@
 <div class="container border rounded d-flex bg-light">
     <div>
-        <button id="authorFilter" class="btn btn-default">Author</button>
-        <div id="authorMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute; width: 220px">
+        <div class="d-flex">
+            <button id="authorFilter" class="btn btn-default">{{'Author'|_}}</button>
+            <div id="authorFilterDesc" class="mt-2 text-success"></div>
+        </div>
+        <div id="authorMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute; width: 250px">
             <input class="form-control" id="searchAuthors" type="text" autocomplete="off" style="width: 100%"/>
             {% partial 'postTable::authors' %}
-            <button id="authorsApply" class="btn btn-sm btn-default apply">Apply</button>
-            <button id="selectAllAuthors" class="btn btn-sm btn-default">Select all</button>
-            <button id="authorsClear" class="btn btn-sm btn-default">Clear</button>
+            <div class="d-flex">
+                <button id="authorsApply" class="btn btn-sm btn-default apply">{{'Apply'|_}}</button>
+                <button id="selectAllAuthors" class="btn btn-sm btn-default">{{'Select all'|_}}</button>
+                <button id="authorsClear" class="btn btn-sm btn-default">{{'Clear'|_}}</button>
+            </div>
         </div>
     </div>
-    <div style="margin-left: 15%;">
-        <button id="tagFilter" class="btn btn-default">Tag</button>
-        <div id="tagMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute;width: 220px">
+    <div style="margin-left: 20%;">
+        <div class="d-flex">
+            <button id="tagFilter" class="btn btn-default">{{'Tag'|_}}</button>
+            <div id="tagFilterDesc" class="mt-2 text-success"></div>
+        </div>
+        <div id="tagMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute;width: 250px">
             <input class="form-control" id="searchTags" type="text" autocomplete="off" style="width: 100%"/>
             {% partial 'postTable::tags' %}
-            <button id="tagsApply" class="btn btn-sm btn-default apply">Apply</button>
-            <button id="selectAllTags" class="btn btn-sm btn-default">Select all</button>
-            <button id="tagsClear" class="btn btn-sm btn-default">Clear</button>
+            <div class="d-flex">
+                <button id="tagsApply" class="btn btn-sm btn-default apply">{{'Apply'|_}}</button>
+                <button id="selectAllTags" class="btn btn-sm btn-default">{{'Select all'|_}}</button>
+                <button id="tagsClear" class="btn btn-sm btn-default">{{'Clear'|_}}</button>
+            </div>
         </div>
     </div>
-        <div style="margin-left: 15%;">
-            <button id="createdAtFilter" class="btn btn-default">Created at</button>
+        <div style="margin-left: 20%;">
+            <div class="d-flex">
+                <button id="createdAtFilter" class="btn btn-default">{{'Created at'|_}}</button>
+                <div id="createdAtFilterDesc" class="mt-2 text-success" style="width: 185px"></div>
+            </div>
             <div id="createdAtMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute;">
                 <div class="d-grid">
-                    After
+                    {{'After'|_}}
                     <input type="date" id="afterCreatedAt" placeholder="After" autocomplete="off">
-                    Before
+                    {{'Before'|_}}
                     <input type="date" id="beforeCreatedAt" placeholder="Before" autocomplete="off">
                 </div>
-                <button id="createdAtApply" class="btn btn-sm btn-default apply">Apply</button>
-                <button id="createdAtClear" class="btn btn-sm btn-default">Clear</button>
+                <div class="d-flex">
+                    <button id="createdAtApply" class="btn btn-sm btn-default apply">{{'Apply'|_}}</button>
+                    <button id="createdAtClear" class="btn btn-sm btn-default">{{'Clear'|_}}</button>
+                </div>
             </div>
+        </div>
+        <div style="margin-left: 5%;">
+        <form method="POST" action="/post/export">
+            <button id="exportPosts" class="mt-1 btn btn-sm btn-success">{{'Export'|_}}</button>
+        </form>
         </div>
 </div>

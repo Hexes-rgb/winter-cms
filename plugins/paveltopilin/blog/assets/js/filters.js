@@ -151,7 +151,7 @@ function sendRequest(filters){
                 tempAuthors: Array.from(filters.authors),
                 tempTags: Array.from(filters.tags)
             }
-
+            setFiltersDesc()
         }
     })
 }
@@ -195,9 +195,9 @@ function setSortIcons(selector){
     deleteSortIcons();
     let img;
     if(filters.sort[1] === 'desc'){
-        img = '<img src="/themes/blog/assets/images/sort-down.png" width="15px">';
+        img = '<img src="/themes/blog/assets/images/sort-down.png" heigth="15px" width="15px" style="margin-left:5px">';
     } else if (filters.sort[1] === 'asc'){
-        img = '<img src="/themes/blog/assets/images/sort-up.png" width="15px">';
+        img = '<img src="/themes/blog/assets/images/sort-up.png" heigth="15px" width="15px" style="margin-left:5px">';
     } else {
         $(`#${selector}`).children(img).remove();
     }
@@ -215,6 +215,8 @@ function renderPostsTable(partial){
 
 function renderFilterMenu(partial, selector){
     $(`#${selector}`).replaceWith(partial);
+    changeFilterColor(tempFilters.tempAuthors, 'author');
+    changeFilterColor(tempFilters.tempTags, 'tag');
 }
 
 function changeFilterMenuVisibility(){
@@ -228,6 +230,23 @@ function changeFilterMenuVisibility(){
         }
     });
     localStorage.setItem('filtersMenu', JSON.stringify(filtersMenu));
+}
+
+function setFiltersDesc(){
+    authorsCount = (filters.authors.length === 0) ? 'all' : filters.authors.length;
+    tagsCount = (filters.tags.length === 0) ? 'all' : filters.tags.length;
+    createdAtDesc = ''.concat(
+        ( filters.afterCreated === '' ) ? '∞' : filters.afterCreated, ' -> ',
+        ( filters.beforeCreated === '' ) ? '∞' : filters.beforeCreated
+    )
+    $('#authorFilterDesc').empty();
+    $('#authorFilterDesc').append(authorsCount);
+
+    $('#tagFilterDesc').empty();
+    $('#tagFilterDesc').append(tagsCount);
+
+    $('#createdAtFilterDesc').empty();
+    $('#createdAtFilterDesc').append(createdAtDesc);
 }
 function prepareFilterData(){
     if(localStorage.getItem('filters') !== null){
@@ -261,9 +280,37 @@ function prepareFilterData(){
     changeFilterMenuVisibility();
     changeFilterColor(tempFilters.tempAuthors, 'author');
     changeFilterColor(tempFilters.tempTags, 'tag');
+    setFiltersDesc();
     $('#afterCreatedAt').val(filters.afterCreated);
     $('#beforeCreatedAt').val(filters.beforeCreated);
     $('#searchInput').val(filters.text);
     $('#searchAuthors').val(filtersMenu.authorMenu.text);
     $('#searchTags').val(filtersMenu.tagMenu.text);
 }
+
+// $(document).on('click', '#exportPosts', function(){
+//     $.request('onExportPosts', {
+//         loading: $.wn.stripeLoadIndicator,
+//         success: function(response){
+//             console.log(response);
+//         }
+//     })
+// });
+// $(document).on('click', '#exportPosts', function(){
+//     let url = `/post/export`;
+
+//     $.ajaxSetup({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//     });
+
+//     $.ajax({
+//         url: url,
+//         method: 'get',
+//         success:function(response)
+//         {
+//             alert(response.success);
+//         }
+//     });
+// });

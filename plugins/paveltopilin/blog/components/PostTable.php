@@ -10,6 +10,7 @@ use PavelTopilin\Blog\Models\Post;
 use Winter\Storm\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
+use PavelTopilin\Blog\Exports\PostsExport;
 
 class PostTable extends ComponentBase
 {
@@ -74,10 +75,10 @@ class PostTable extends ComponentBase
         return response()->json(['partial' => $this->renderPartial('postTable::tags')]);
     }
 
-    public function onFilter()
+    public function getPosts()
     {
         $filters = (empty(Request::only('filters')['filters'])) ? Session::pull('filters') : Request::only('filters')['filters'];
-
+        // dd(Session::all());
         $posts = Post::when(
             (empty($filters['text'])) ? false : $filters['text'],
             function ($query, $text) {
@@ -113,10 +114,22 @@ class PostTable extends ComponentBase
                 }
                 return $query->orderBy($sort[0], $sort[1]);
             }
-        )
-            ->paginate(5);
-        $this->page['posts'] = $posts;
+        );
         Session::put('filters', $filters);
+        return $posts;
+        // return response()->json(['partial' => $this->renderPartial('postTable::posts-table')]);
+    }
+
+    public function onFilter()
+    {
+        $posts = $this->getPosts()->paginate(5);
+        $this->page['posts'] = $posts;
         return response()->json(['partial' => $this->renderPartial('postTable::posts-table')]);
     }
+
+    // public function onExportPosts()
+    // {
+    //     $posts = $this->getPosts()->get();
+    //     (new PostsExport($posts))->download('posts', 'csv');
+    // }
 }
