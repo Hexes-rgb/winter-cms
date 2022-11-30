@@ -10,6 +10,7 @@ use PavelTopilin\Blog\Models\Post;
 use Winter\Storm\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use PavelTopilin\Blog\Exports\PostsExport;
 
 class PostTable extends ComponentBase
@@ -127,9 +128,8 @@ class PostTable extends ComponentBase
         return response()->json(['partial' => $this->renderPartial('postTable::posts-table')]);
     }
 
-    // public function onExportPosts()
-    // {
-    //     $posts = $this->getPosts()->get();
-    //     (new PostsExport($posts))->download('posts', 'csv');
-    // }
+    public function onExportPosts()
+    {
+        return false;
+    }
 }

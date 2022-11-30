@@ -38,6 +38,12 @@ return [
             'url' => '/storage/app',
             'visibility' => 'public',
         ],
+        'public_exports' => [
+            'driver' => 'local',
+            'url' => '/storage/app/exports',
+            'root'   => storage_path('app') . '/exports',
+            'visibility' => 'public',
+        ],
         's3' => [
             'bucket' => env('AWS_BUCKET'),
             'driver' => 's3',
