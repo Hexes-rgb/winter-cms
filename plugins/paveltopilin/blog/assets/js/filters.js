@@ -160,7 +160,7 @@ function sendAuthorMenuData(){
     localStorage.setItem('filtersMenu', JSON.stringify(filtersMenu));
     $.request('onGetAuthors', {
         data: {authorSearch: filtersMenu.authorMenu.text},
-        // loading: $.wn.stripeLoadIndicator,
+        loading: $.wn.stripeLoadIndicator,
         success: function(response){
             renderFilterMenu(response.partial, 'authors');
         }
@@ -171,7 +171,7 @@ function sendTagMenuData(){
     localStorage.setItem('filtersMenu', JSON.stringify(filtersMenu));
     $.request('onGetTags', {
         data: {tagSearch: filtersMenu.tagMenu.text},
-        // loading: $.wn.stripeLoadIndicator,
+        loading: $.wn.stripeLoadIndicator,
         success: function(response){
             renderFilterMenu(response.partial, 'tags')
         }
@@ -287,3 +287,12 @@ function prepareFilterData(){
     $('#searchAuthors').val(filtersMenu.authorMenu.text);
     $('#searchTags').val(filtersMenu.tagMenu.text);
 }
+
+$(document).on('click', '#exportPosts', function(){
+    $.request('onExportPosts', {
+        loading: $.wn.stripeLoadIndicator,
+        handleRedirectResponse: function(url){
+            window.location.href = url;
+        }
+    })
+});

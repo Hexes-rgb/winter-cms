@@ -130,6 +130,6 @@ class PostTable extends ComponentBase
 
     public function onExportPosts()
     {
-        return false;
+        return Redirect::to('trigger-download');
     }
 }

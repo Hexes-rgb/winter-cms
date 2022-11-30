@@ -71,12 +71,6 @@ class PostExport extends ComponentBase
             }
         )->get();
 
-        (new PostsExport($posts))->store('posts.xlsx', 'public_exports');
-        $fileName = 'posts.xlsx';
-        $pathToFile = storage_path('app/exports/') . $fileName;
-        $headers = [
-            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-        ];
-        return Response::download($pathToFile, $fileName, $headers);
+        return (new PostsExport($posts))->download('posts.xlsx');
     }
 }
