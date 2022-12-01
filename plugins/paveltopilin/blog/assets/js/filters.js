@@ -154,6 +154,9 @@ function sendRequest(filters){
             setFiltersDesc()
         }
     })
+    google.charts.load('current', {'packages':['corechart']});
+
+    google.charts.setOnLoadCallback(drawCharts);
 }
 
 function sendAuthorMenuData(){
@@ -211,11 +214,6 @@ function deleteSortIcons(){
 function renderPostsTable(partial){
     $('#table').replaceWith(partial);
     setSortIcons(filters.sort[0]);
-
-    google.charts.load('current', {'packages':['corechart']});
-
-    google.charts.setOnLoadCallback(drawCharts);
-
 }
 
 function renderFilterMenu(partial, selector){
@@ -291,6 +289,10 @@ function prepareFilterData(){
     $('#searchInput').val(filters.text);
     $('#searchAuthors').val(filtersMenu.authorMenu.text);
     $('#searchTags').val(filtersMenu.tagMenu.text);
+
+    google.charts.load('current', {'packages':['corechart']});
+
+    google.charts.setOnLoadCallback(drawCharts);
 }
 
 $(document).on('click', '#exportPosts', function(){
@@ -305,10 +307,39 @@ $(document).on('click', '#exportPosts', function(){
 function drawCharts(){
     $.request('onLoadChartsTables', {
         success: function(response){
-            // var data = new google.visualization.DataTable();
-            // console.log(response, data);
+            authorsData = {
+                rows: []
+            }
+            tagsData = {
+                rows: []
+            }
+
+
+            var authorsTable = new google.visualization.DataTable();
+            authorsTable.addColumn('string', 'Author name');
+            authorsTable.addColumn('number', 'Posts count');
+            for(obj in response.authorsData){
+                authorsTable.addRow(
+                    [response.authorsData[obj].name, response.authorsData[obj].posts_count]
+                );
+            }
+
             var authorsChart = new google.visualization.PieChart(document.getElementById('authors_div'));
-            authorsChart.draw(response.authorsChart);
+            var options = {'title':'Authors'}
+            authorsChart.draw(authorsTable, options);
+
+            var tagsTable = new google.visualization.DataTable();
+            tagsTable.addColumn('string', 'Tag name');
+            tagsTable.addColumn('number', 'Posts count');
+            for(obj in response.tagsData){
+                tagsTable.addRow(
+                    [response.tagsData[obj].name, response.tagsData[obj].posts_count]
+                );
+            }
+
+            var tagsChart = new google.visualization.PieChart(document.getElementById('tags_div'));
+            var options = {'title':'Tags'}
+            tagsChart.draw(tagsTable, options);
         }
     });
 }

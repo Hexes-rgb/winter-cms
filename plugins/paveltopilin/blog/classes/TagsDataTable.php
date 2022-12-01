@@ -22,19 +22,19 @@ class TagsDataTable
             function ($query, $tags) {
                 return $query->select('id', 'name')->whereIn('id', $tags);
             }
-        )->get()->loadCount('posts');
+        )->get()->loadCount('posts')->toArray();
     }
 
     public function build()
     {
-        $chartTable  = new DataTable();
-        $chartTable->addStringColumn('Tags');
-        $chartTable->addNumberColumn('Posts count');
+        // $chartTable  = new DataTable();
+        // $chartTable->addStringColumn('Tags');
+        // $chartTable->addNumberColumn('Posts count');
 
-        foreach ($this->tags as $tags) {
-            $chartTable->addRow([$tags->name, $tags->posts_count]);
-        }
+        // foreach ($this->tags as $tags) {
+        //     $chartTable->addRow([$tags->name, $tags->posts_count]);
+        // }
         /* добавляешь данные из $this->data */
-        return $chartTable;
+        return $this->tags;
     }
 }

@@ -148,9 +148,10 @@ class PostTable extends ComponentBase
     public function onLoadChartsTables()
     {
         $filters = $this->getFilters();
+
         return [
-            'authorsChart' => (new AuthorsDataTable($filters))->build(),
-            'tagsChart' => (new TagsDataTable($filters))->build()
+            'authorsData' => (new AuthorsDataTable($filters))->build(),
+            'tagsData' => (new TagsDataTable($filters))->build()
         ];
     }
 }

@@ -16,7 +16,7 @@ class AuthorsDataTable
             function ($query, $authors) {
                 return $query->select('id', 'name')->whereIn('id', $authors);
             }
-        )->get()->loadCount('posts');
+        )->get()->loadCount('posts')->toArray();
         // $this->tags = Tag::when(
         //     (empty($filters['tags'])) ? false : $filters['tags'],
         //     function ($query, $tags) {
@@ -27,15 +27,15 @@ class AuthorsDataTable
 
     public function build()
     {
-        $chartTable  = new DataTable();
-        $chartTable->addStringColumn('Authors');
-        $chartTable->addNumberColumn('Posts count');
+        // $chartTable  = new DataTable();
+        // $chartTable->addStringColumn('Authors');
+        // $chartTable->addNumberColumn('Posts count');
 
-        /* добавляешь данные из $this->data */
-        foreach ($this->authors as $author) {
-            $chartTable->addRow([$author->name, $author->posts_count]);
-        }
+        // /* добавляешь данные из $this->data */
+        // foreach ($this->authors as $author) {
+        //     $chartTable->addRow([$author->name, $author->posts_count]);
+        // }
 
-        return $chartTable;
+        return $this->authors;
     }
 }
