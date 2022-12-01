@@ -2,16 +2,20 @@
 
 namespace PavelTopilin\Blog\Components;
 
+
 use Carbon\Carbon;
 use Winter\User\Models\User;
 use Cms\Classes\ComponentBase;
 use PavelTopilin\Blog\Models\Tag;
 use PavelTopilin\Blog\Models\Post;
+
 use Winter\Storm\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use PavelTopilin\Blog\Exports\PostsExport;
+use PavelTopilin\Blog\Classes\TagsDataTable;
+use PavelTopilin\Blog\Classes\AuthorsDataTable;
 
 class PostTable extends ComponentBase
 {
@@ -76,10 +80,17 @@ class PostTable extends ComponentBase
         return response()->json(['partial' => $this->renderPartial('postTable::tags')]);
     }
 
+    public function getFilters()
+    {
+        return (empty(Request::only('filters')['filters'])) ? Session::get('filters') : Request::only('filters')['filters'];
+    }
+
     public function getPosts()
     {
-        $filters = (empty(Request::only('filters')['filters'])) ? Session::pull('filters') : Request::only('filters')['filters'];
-        // dd(Session::all());
+        // $filters = (empty(Request::only('filters')['filters'])) ? Session::get('filters') : Request::only('filters')['filters'];
+
+        $filters = $this->getFilters();
+
         $posts = Post::when(
             (empty($filters['text'])) ? false : $filters['text'],
             function ($query, $text) {
@@ -117,6 +128,7 @@ class PostTable extends ComponentBase
             }
         );
         Session::put('filters', $filters);
+
         return $posts;
         // return response()->json(['partial' => $this->renderPartial('postTable::posts-table')]);
     }
@@ -131,5 +143,14 @@ class PostTable extends ComponentBase
     public function onExportPosts()
     {
         return Redirect::to('trigger-download');
+    }
+
+    public function onLoadChartsTables()
+    {
+        $filters = $this->getFilters();
+        return [
+            'authorsChart' => (new AuthorsDataTable($filters))->build(),
+            'tagsChart' => (new TagsDataTable($filters))->build()
+        ];
     }
 }

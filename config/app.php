@@ -267,6 +267,7 @@ return [
 
         System\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
     ]),
 
     /*
@@ -303,5 +304,6 @@ return [
     'aliases' => array_merge(include(base_path('modules/system/aliases.php')), [
         // 'Str' => 'Illuminate\Support\Str', // Example
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
     ]),
 ];

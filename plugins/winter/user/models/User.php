@@ -51,7 +51,7 @@ class User extends UserBase
 
     public $hasMany = [
         'comments' => [Comment::class, 'key' => 'id', 'otherKey' => 'user_id'],
-        'posts' => [Post::class, 'key' => 'id', 'otherKey' => 'user_id']
+        'posts' => [Post::class, 'key' => 'user_id', 'otherKey' => 'id']
     ];
 
     public $attachOne = [

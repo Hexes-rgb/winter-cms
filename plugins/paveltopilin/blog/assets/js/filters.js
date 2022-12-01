@@ -211,6 +211,11 @@ function deleteSortIcons(){
 function renderPostsTable(partial){
     $('#table').replaceWith(partial);
     setSortIcons(filters.sort[0]);
+
+    google.charts.load('current', {'packages':['corechart']});
+
+    google.charts.setOnLoadCallback(drawCharts);
+
 }
 
 function renderFilterMenu(partial, selector){
@@ -296,3 +301,14 @@ $(document).on('click', '#exportPosts', function(){
         }
     })
 });
+
+function drawCharts(){
+    $.request('onLoadChartsTables', {
+        success: function(response){
+            // var data = new google.visualization.DataTable();
+            // console.log(response, data);
+            var authorsChart = new google.visualization.PieChart(document.getElementById('authors_div'));
+            authorsChart.draw(response.authorsChart);
+        }
+    });
+}
