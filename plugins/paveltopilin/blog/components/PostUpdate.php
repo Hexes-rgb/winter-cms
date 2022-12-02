@@ -48,14 +48,12 @@ class PostUpdate extends ComponentBase
             throw new ValidationException($validation);
         }
         $data = $validation->validated();
-        $title = $data['title'];
-        $text = $data['text'];
         $post = Post::findOrFail(input('post_id'));
         $user = Auth::getUser();
         if ($user->id == $post->author->id) {
             $post->update([
-                'title' => $title,
-                'text' => $text,
+                'title' => $data['title'],
+                'text' => $data['text'],
             ]);
             Flash::success('Jobs done!');
         } else {

@@ -1,11 +1,11 @@
-<div class="container border rounded d-flex bg-light">
+<div class="container border rounded d-flex justify-content-between bg-light">
     <div>
         <div class="d-flex">
             <button id="authorFilter" class="btn btn-default">{{'Author'|_}}</button>
             <div id="authorFilterDesc" class="mt-2 text-success"></div>
         </div>
-        <div id="authorMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute; width: 250px">
-            <input class="form-control" id="searchAuthors" type="text" autocomplete="off" style="width: 100%"/>
+        <div id="authorMenu" class="shadow border filter-menu rounded bg-light p-2 filter-popover">
+            <input class="form-control w-100" id="searchAuthors" type="text" autocomplete="off"/>
             {% partial 'postTable::authors' %}
             <div class="d-flex">
                 <button id="authorsApply" class="btn btn-sm btn-default apply">{{'Apply'|_}}</button>
@@ -14,13 +14,13 @@
             </div>
         </div>
     </div>
-    <div style="margin-left: 20%;">
+    <div>
         <div class="d-flex">
             <button id="tagFilter" class="btn btn-default">{{'Tag'|_}}</button>
             <div id="tagFilterDesc" class="mt-2 text-success"></div>
         </div>
-        <div id="tagMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute;width: 250px">
-            <input class="form-control" id="searchTags" type="text" autocomplete="off" style="width: 100%"/>
+        <div id="tagMenu" class="shadow border filter-menu rounded bg-light p-2 filter-popover">
+            <input class="form-control w-100" id="searchTags" type="text" autocomplete="off"/>
             {% partial 'postTable::tags' %}
             <div class="d-flex">
                 <button id="tagsApply" class="btn btn-sm btn-default apply">{{'Apply'|_}}</button>
@@ -29,12 +29,12 @@
             </div>
         </div>
     </div>
-        <div style="margin-left: 20%;">
+        <div>
             <div class="d-flex">
                 <button id="createdAtFilter" class="btn btn-default">{{'Created at'|_}}</button>
-                <div id="createdAtFilterDesc" class="mt-2 text-success" style="width: 185px"></div>
+                <div id="createdAtFilterDesc" class="mt-2 text-success"></div>
             </div>
-            <div id="createdAtMenu" class="shadow border filter-menu rounded bg-light p-2" style="display: none; z-index:1; position: absolute;">
+            <div id="createdAtMenu" class="shadow border filter-menu rounded bg-light p-2 filter-popover">
                 <div class="d-grid">
                     {{'After'|_}}
                     <input type="date" id="afterCreatedAt" placeholder="After" autocomplete="off">
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div style="margin-left: 5%;">
+        <div>
             <button id="exportPosts" class="mt-1 btn btn-sm btn-success">{{'Export'|_}}</button>
         </div>
 </div>

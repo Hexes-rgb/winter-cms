@@ -30,6 +30,6 @@
         {% endfor %}
     </table>
     <div class="mt-5 d-flex justify-content-center">
-        {{ posts.render|raw }}
+        {{ posts.links('pagination::bootstrap-5').render()|raw }}
     </div>
 </div>

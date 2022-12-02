@@ -198,9 +198,9 @@ function setSortIcons(selector){
     deleteSortIcons();
     let img;
     if(filters.sort[1] === 'desc'){
-        img = '<img src="/themes/blog/assets/images/sort-down.png" heigth="15px" width="15px" style="margin-left:5px">';
+        img = '<img src="/themes/blog/assets/images/sort-down.png" class="sort-icon">';
     } else if (filters.sort[1] === 'asc'){
-        img = '<img src="/themes/blog/assets/images/sort-up.png" heigth="15px" width="15px" style="margin-left:5px">';
+        img = '<img src="/themes/blog/assets/images/sort-up.png" class="sort-icon">';
     } else {
         $(`#${selector}`).children(img).remove();
     }
@@ -307,13 +307,6 @@ $(document).on('click', '#exportPosts', function(){
 function drawCharts(){
     $.request('onLoadChartsTables', {
         success: function(response){
-            authorsData = {
-                rows: []
-            }
-            tagsData = {
-                rows: []
-            }
-
 
             var authorsTable = new google.visualization.DataTable();
             authorsTable.addColumn('string', 'Author name');
@@ -340,6 +333,7 @@ function drawCharts(){
             var tagsChart = new google.visualization.PieChart(document.getElementById('tags_div'));
             var options = {'title':'Tags'}
             tagsChart.draw(tagsTable, options);
+
         }
     });
 }

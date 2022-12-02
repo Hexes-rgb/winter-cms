@@ -8,7 +8,6 @@ use Winter\User\Models\User;
 use Cms\Classes\ComponentBase;
 use PavelTopilin\Blog\Models\Tag;
 use PavelTopilin\Blog\Models\Post;
-
 use Winter\Storm\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
@@ -38,15 +37,8 @@ class PostTable extends ComponentBase
         return [];
     }
 
-    public function prepareVars()
-    {
-        $this->page['authors'] = User::all();
-        $this->page['tags'] = Tag::all();
-    }
-
     public function onRun()
     {
-        // $this->prepareVars();
         $this->onFilter();
         $this->onGetAuthors();
         $this->onGetTags();
@@ -87,38 +79,10 @@ class PostTable extends ComponentBase
 
     public function getPosts()
     {
-        // $filters = (empty(Request::only('filters')['filters'])) ? Session::get('filters') : Request::only('filters')['filters'];
 
         $filters = $this->getFilters();
 
-        $posts = Post::when(
-            (empty($filters['text'])) ? false : $filters['text'],
-            function ($query, $text) {
-                return $query->where('title', 'LIKE', '%' . $text . '%');
-            }
-        )->when(
-            (empty($filters['authors'])) ? false : $filters['authors'],
-            function ($query, $authors) {
-                return $query->whereIn('user_id', $authors);
-            }
-        )->when(
-            (empty($filters['tags'])) ? false : $filters['tags'],
-            function ($query, $tags) {
-                return $query->whereHas('tags', function ($query) use ($tags) {
-                    $query->whereIn('id', $tags);
-                });
-            }
-        )->when(
-            (empty($filters['afterCreated'])) ? false : $filters['afterCreated'],
-            function ($query, $afterCreated) {
-                return $query->where('created_at', '>', $afterCreated);
-            }
-        )->when(
-            (empty($filters['beforeCreated'])) ? false : $filters['beforeCreated'],
-            function ($query, $beforeCreated) {
-                return $query->where('created_at', '<', $beforeCreated);
-            }
-        )->when(
+        $posts = Post::postFilters($filters)->when(
             (empty($filters['sort'])) ? false : $filters['sort'],
             function ($query, $sort) {
                 if (empty($sort[1])) {
@@ -130,7 +94,6 @@ class PostTable extends ComponentBase
         Session::put('filters', $filters);
 
         return $posts;
-        // return response()->json(['partial' => $this->renderPartial('postTable::posts-table')]);
     }
 
     public function onFilter()

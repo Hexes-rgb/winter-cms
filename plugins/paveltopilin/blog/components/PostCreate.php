@@ -46,12 +46,10 @@ class PostCreate extends ComponentBase
             throw new ValidationException($validation);
         }
         $data = $validation->validated();
-        $title = $data['title'];
-        $text = $data['text'];
         $user = Auth::getUser();
         $post = Post::create([
-            'title' => $title,
-            'text' => $text,
+            'title' => $data['title'],
+            'text' => $data['text'],
             'user_id' => $user->id,
         ]);
         $photo = $data['photo'] ?? false;

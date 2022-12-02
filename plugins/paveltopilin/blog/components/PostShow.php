@@ -47,9 +47,11 @@ class PostShow extends ComponentBase
         if (Auth::getUser()) {
             $this->page['canEdit'] = $post->author->id == Auth::getUser()->id;
             $this->page['canLike'] = true;
+            $this->page['canReply'] = true;
         } else {
             $this->page['canEdit'] = false;
             $this->page['canLike'] = false;
+            $this->page['canReply'] = false;
         }
     }
 
@@ -84,7 +86,6 @@ class PostShow extends ComponentBase
         ];
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
-            // throw new ValidationException($validator);
             return response()->json(['errors' => $validator->errors()]);
         }
         $data = $validator->validated();
@@ -98,6 +99,7 @@ class PostShow extends ComponentBase
         ]);
         Flash::success('You did it!');
         $this->page['comment'] = $comment;
+        $this->prepareVars();
         return response()->json(['partial' => $this->renderPartial('postShow::comment')]);
     }
 
@@ -107,6 +109,7 @@ class PostShow extends ComponentBase
         $comment->delete();
         $this->page['comment'] = $comment;
         Flash::success('Comment has been deleted');
+        $this->prepareVars();
     }
 
     public function onRestoreComment()
@@ -115,5 +118,6 @@ class PostShow extends ComponentBase
         $comment->restore();
         $this->page['comment'] = $comment;
         Flash::success('Comment has been restored');
+        $this->prepareVars();
     }
 }

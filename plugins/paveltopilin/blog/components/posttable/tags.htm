@@ -1,4 +1,4 @@
-<div id="tags" class="overflow-auto" style="height: 130px">
+<div id="tags" class="overflow-auto filter-list-partial">
     {% for tag in tags %}
         <p id="tag{{ tag.id }}" tag-id="{{ tag.id }}" class="tag">{{ tag.name }}</p>
     {% endfor %}

@@ -4,15 +4,21 @@
 <div class="mt-5 text-start">
     {{ post.text }}
 </div>
-<div class="row text-start">
+<div class="mt-4 row text-start">
     <div class="col-3">
-        {{ 'Created at'|_ }}: {{ post.created_at }}
+        {{ 'Created at'|_ }}:
+        <br>
+        {{ post.created_at }}
     </div>
     <div class="col-3">
-        {{ 'Updated at'|_ }}: {{ post.updated_at }}
+        {{ 'Updated at'|_ }}:
+        <br>
+        {{ post.updated_at }}
     </div>
     <div class="col-3">
-        {{ 'Author'|_ }}: {{ post.author.name }}
+        {{ 'Author'|_ }}:
+        <br>
+        {{ post.author.name }}
     </div>
     <div class="col-3">
         {{ 'Likes'|_ }}:
@@ -32,5 +38,5 @@
     {# <img src="{{ image }}"> #}
 </div>
     {% if canEdit %}
-        <a href="/post/{{ post.id }}/edit" class="btn btn-outline-primary">Edit post</a>
+        <a href="/post/{{ post.id }}/edit" class="mt-3 mb-3 btn btn-outline-primary">Edit post</a>
     {% endif %}

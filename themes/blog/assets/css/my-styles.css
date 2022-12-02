@@ -1,0 +1,14 @@
+.filter-popover{
+    display: none;
+    z-index:1;
+    position: absolute;
+    width: 250px;
+}
+.filter-list-partial{
+    height: 130px;
+}
+.sort-icon{
+    margin-left:5px;
+    height: 15px;
+    width: 15px;
+}

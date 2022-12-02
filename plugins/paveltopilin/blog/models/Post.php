@@ -73,4 +73,36 @@ class Post extends Model
             $q->withoutGlobalScope(NestedTreeScope::class)->whereIn('id', $tags);
         });
     }
+
+    public function scopePostFilters($query, $filters)
+    {
+        return $query->when(
+            (empty($filters['text'])) ? false : $filters['text'],
+            function ($query, $text) {
+                return $query->where('title', 'LIKE', '%' . $text . '%');
+            }
+        )->when(
+            (empty($filters['authors'])) ? false : $filters['authors'],
+            function ($query, $authors) {
+                return $query->whereIn('user_id', $authors);
+            }
+        )->when(
+            (empty($filters['tags'])) ? false : $filters['tags'],
+            function ($query, $tags) {
+                return $query->whereHas('tags', function ($query) use ($tags) {
+                    $query->whereIn('id', $tags);
+                });
+            }
+        )->when(
+            (empty($filters['afterCreated'])) ? false : $filters['afterCreated'],
+            function ($query, $afterCreated) {
+                return $query->where('created_at', '>', $afterCreated);
+            }
+        )->when(
+            (empty($filters['beforeCreated'])) ? false : $filters['beforeCreated'],
+            function ($query, $beforeCreated) {
+                return $query->where('created_at', '<', $beforeCreated);
+            }
+        );
+    }
 }
