@@ -79,7 +79,7 @@ class Post extends Model
         return $query->when(
             (empty($filters['text'])) ? false : $filters['text'],
             function ($query, $text) {
-                return $query->where('title', 'LIKE', '%' . $text . '%');
+                return $query->where('paveltopilin_blog_posts.title', 'LIKE', '%' . $text . '%');
             }
         )->when(
             (empty($filters['authors'])) ? false : $filters['authors'],
@@ -96,12 +96,12 @@ class Post extends Model
         )->when(
             (empty($filters['afterCreated'])) ? false : $filters['afterCreated'],
             function ($query, $afterCreated) {
-                return $query->where('created_at', '>', $afterCreated);
+                return $query->where('paveltopilin_blog_posts.created_at', '>', $afterCreated);
             }
         )->when(
             (empty($filters['beforeCreated'])) ? false : $filters['beforeCreated'],
             function ($query, $beforeCreated) {
-                return $query->where('created_at', '<', $beforeCreated);
+                return $query->where('paveltopilin_blog_posts.created_at', '<', $beforeCreated);
             }
         );
     }
