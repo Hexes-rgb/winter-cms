@@ -295,8 +295,6 @@ class Account extends ComponentBase
              */
             $data = post();
 
-            // dd($data);
-
             if (!array_key_exists('password_confirmation', $data)) {
                 $data['password_confirmation'] = post('password');
             }
@@ -329,6 +327,13 @@ class Account extends ComponentBase
             $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
             $adminActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_ADMIN;
             $user = Auth::register($data, $automaticActivation);
+
+            /*
+             * Add avatar to user
+             */
+            if (Input::hasFile('avatar')) {
+                $user->avatar = Input::file('avatar');
+            }
 
             Event::fire('winter.user.register', [$user, $data]);
 
@@ -438,6 +443,7 @@ class Account extends ComponentBase
 
         $user->fill($data);
         $user->save();
+
 
         /*
          * Password has changed, reauthenticate the user

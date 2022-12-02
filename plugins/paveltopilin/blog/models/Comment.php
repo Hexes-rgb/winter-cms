@@ -5,6 +5,7 @@ namespace PavelTopilin\Blog\Models;
 use Model;
 
 use Winter\User\Models\User;
+use Winter\User\Facades\Auth;
 use PavelTopilin\Blog\Models\Post;
 
 /**
@@ -46,5 +47,10 @@ class Comment extends Model
     public function isDelete()
     {
         return $this->trashed();
+    }
+
+    public function canChangeComment()
+    {
+        return $this->author->id == Auth::getUser()->id;
     }
 }

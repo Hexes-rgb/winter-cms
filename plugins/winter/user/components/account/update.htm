@@ -1,4 +1,5 @@
-{{ form_ajax('onUpdate') }}
+{# {{ form_ajax('request':'onUpdate', 'file':true)  }} #}
+    <form data-request="onUpdate" data-request-files>
 
     <div class="form-group">
         <label for="accountName">{{ 'Full Name'|_ }}</label>
@@ -36,7 +37,11 @@
             <input name="password_current" type="password" class="form-control" id="accountPasswordCurrent">
         </div>
     {% endif %}
-
+    <div class="form-group">
+        <label class="form-laber" for="avatar">{{ 'Avatar'|_ }}</label>
+        <input id="avatar" class="mt-2 form-control" name="avatar" type="file"/>
+    </div>
     <button data-request-data="redirect: '/'" type="submit" class="btn btn-primary">{{ 'Save'|_ }}</button>
 
-{{ form_close() }}
+{# {{ form_close() }} #}
+</form>

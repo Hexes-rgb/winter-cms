@@ -45,6 +45,7 @@ $(document).on('click', '.author', function(){
 });
 
 $(document).on('click', '#selectAllAuthors', function(){
+    tempFilters.tempAuthors = [];
     $('.author').each(function(){
         tempFilters.tempAuthors.push(Number($(this).attr('author-id')));
     });
@@ -63,6 +64,7 @@ $(document).on('click', '.tag', function(){
 });
 
 $(document).on('click', '#selectAllTags', function(){
+    tempFilters.tempTags = [];
     $('.tag').each(function(){
         tempFilters.tempTags.push(Number($(this).attr('tag-id')));
     });

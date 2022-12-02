@@ -58,6 +58,9 @@ class PostShow extends ComponentBase
     public function onRun()
     {
         $this->prepareVars();
+        // dd(storage_path('app'));
+        // dd(storage_path('app/') . Auth::getUser()->avatar->getDiskPath());
+        // dd(Auth::getUser()->avatar->getLocalPath());
     }
 
     public function onLike()

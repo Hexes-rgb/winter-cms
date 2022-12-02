@@ -1,5 +1,12 @@
 <div class="m-2">
-    <p>{{ comment.author.name }}</p>
+    <div class="d-flex">
+        <p>{{ comment.author.name }}</p>
+        {% if comment.author.avatar %}
+            <img class="comment-author-avatar" src="{{ comment.author.avatar.getPath() }}" />
+        {% else %}
+            <img class="comment-author-avatar" src="/themes/blog/assets/images/default-avatar.png" />
+        {% endif %}
+    </div>
     <p>{{ comment.text }}</p>
 </div>
 {% if canReply %}
@@ -12,7 +19,9 @@
                 <input name="post_id" value="{{ comment.post.id }}" type="hidden"/>
                 <input name="comment_id" value="{{ comment.id }}" type="hidden"/>
                 <button type="submit" class="ms-2 btn btn-outline-primary">{{ 'Reply'|_ }}</button>
-                <button comment-id="{{ comment.id }}" class="ms-2 btn btn-sm btn-danger delete-сomment">{{ 'Delete'|_ }}</button>
+                {% if comment.canChangeComment()%}
+                    <button comment-id="{{ comment.id }}" class="ms-2 btn btn-sm btn-danger delete-сomment">{{ 'Delete'|_ }}</button>
+                {% endif %}
             </div>
         </form>
     </div>

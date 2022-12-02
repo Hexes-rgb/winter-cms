@@ -1,7 +1,8 @@
 {% if canRegister %}
     <h3>{{ 'Register'|_ }}</h3>
 
-    {{ form_ajax('onRegister') }}
+    {# {{ form_ajax('onRegister', {'files' : true}) }} #}
+    <form data-request="onRegister" data-request-files>
 
         <div class="form-group">
             <label for="registerName">{{ 'Full Name'|_ }}</label>
@@ -58,9 +59,14 @@
             </select>
         </div>
 
-        <button data-request-data="redirect: '/'" type="submit" class="btn btn-primary">{{ 'Register'|_ }}</button>
+        <div class="form-group">
+            <label class="form-laber" for="avatar">{{ 'Avatar'|_ }}</label>
+            <input id="avatar" class="mt-2 form-control" name="avatar" type="file"/>
+        </div>
 
-    {{ form_close() }}
+        <button data-request-data="redirect: '/'" type="submit" class="mt-2 btn btn-primary">{{ 'Register'|_ }}</button>
+    </form>
+    {# {{ form_close() }} #}
 {% else %}
     <!-- Registration is disabled. -->
 {% endif %}

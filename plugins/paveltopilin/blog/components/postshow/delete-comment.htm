@@ -1,7 +1,11 @@
-<p>{{ 'Unknown user'|_ }}</p>
-<p>{{ 'Comment has been deleted'|_ }}</p>
-<div class="d-flex">
-    <button comment-id="{{ comment.id }}" class="btn btn-sm btn-success restore-сomment">{{ 'Restore'|_ }}</button>
+<div class="p-2">
+    <p>{{ 'Unknown user'|_ }}</p>
+    <p>{{ 'Comment has been deleted'|_ }}</p>
+</div>
+<div class="d-flex m-2">
+    {% if comment.canChangeComment()%}
+        <button comment-id="{{ comment.id }}" class="btn btn-sm btn-success restore-сomment">{{ 'Restore'|_ }}</button>
+    {% endif %}
 </div>
 
 
