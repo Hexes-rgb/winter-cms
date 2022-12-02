@@ -32,7 +32,7 @@ class Post extends Model
      */
     public $rules = [];
 
-    public $attachMany = [
+    public $attachOne = [
         'photo' => File::class
     ];
 

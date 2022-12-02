@@ -4,6 +4,7 @@ namespace PavelTopilin\Blog\Components;
 
 use Cms\Classes\ComponentBase;
 use PavelTopilin\Blog\Models\Post;
+use Illuminate\Support\Facades\Request;
 
 class PostList extends ComponentBase
 {
@@ -26,8 +27,12 @@ class PostList extends ComponentBase
         return [];
     }
 
-    public function posts()
+    public function onRun()
     {
-        return Post::paginate(2);
+        $user_id = $this->param('user_id') ?? false;
+        $posts = Post::when($user_id, function ($query, $user_id) {
+            return $query->where('user_id', $user_id);
+        })->paginate(2);
+        $this->page['posts'] = $posts;
     }
 }

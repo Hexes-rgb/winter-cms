@@ -1,13 +1,15 @@
-<div class="m-2">
-    <div class="d-flex">
-        <p>{{ comment.author.name }}</p>
-        {% if comment.author.avatar %}
-            <img class="comment-author-avatar" src="{{ comment.author.avatar.getPath() }}" />
-        {% else %}
-            <img class="comment-author-avatar" src="/themes/blog/assets/images/default-avatar.png" />
-        {% endif %}
+<div class="p-3">
+    <div class="d-flex align-items-center">
+        <div>{{ comment.author.name }}</div>
+        <div class="ms-1 p-1 border rounded">
+            {% if comment.author.avatar %}
+                <img class="comment-author-avatar" src="{{ comment.author.avatar.getPath() }}" />
+            {% else %}
+                <img class="comment-author-avatar" src="/themes/blog/assets/images/default-avatar.png" />
+            {% endif %}
+        </div>
     </div>
-    <p>{{ comment.text }}</p>
+    <div class="mt-2">{{ comment.text }}</div>
 </div>
 {% if canReply %}
     <div class="w-50">

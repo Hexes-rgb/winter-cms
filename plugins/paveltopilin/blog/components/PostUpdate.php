@@ -5,6 +5,7 @@ namespace PavelTopilin\Blog\Components;
 use Winter\User\Facades\Auth;
 use Cms\Classes\ComponentBase;
 use PavelTopilin\Blog\Models\Post;
+use Illuminate\Support\Facades\Request;
 use Winter\Storm\Support\Facades\Flash;
 use Winter\Storm\Support\Facades\Validator;
 use Winter\Storm\Exception\ValidationException;
@@ -38,10 +39,11 @@ class PostUpdate extends ComponentBase
 
     public function onUpdatePost()
     {
-        $data = post();
+        $data = Request::all();
         $rules = [
             'title' => 'required|min:3|max:200',
             'text' => 'required|min:3',
+            'photo' => 'image'
         ];
         $validation = Validator::make($data, $rules);
         if ($validation->fails()) {
@@ -55,6 +57,9 @@ class PostUpdate extends ComponentBase
                 'title' => $data['title'],
                 'text' => $data['text'],
             ]);
+            if ($data['photo'] ?? false) {
+                $post->photo()->create(['data' => $data['photo']]);
+            }
             Flash::success('Jobs done!');
         } else {
             Flash::error('You are not author');

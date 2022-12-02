@@ -13,7 +13,19 @@
     width: 15px;
 }
 .comment-author-avatar{
-    margin-left: 5px;
     height: 35px;
     width: 35px;
+}
+.pagination{
+    margin-left: 10px;
+}
+.post-list-photo{
+    border-radius: 5px;
+    height: 200px;
+    width: 200px;
+}
+.post-show-photo{
+    border-radius: 5px;
+    height: 300px;
+    width: 300px;
 }

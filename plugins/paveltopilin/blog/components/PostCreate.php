@@ -36,6 +36,7 @@ class PostCreate extends ComponentBase
     public function onCreatePost()
     {
         $data = Request::all();
+        // dd($data);
         $rules = [
             'title' => 'required|min:3|max:200',
             'text' => 'required|min:3',
@@ -52,9 +53,10 @@ class PostCreate extends ComponentBase
             'text' => $data['text'],
             'user_id' => $user->id,
         ]);
-        $photo = $data['photo'] ?? false;
-        if ($photo) {
-            $post->photo()->create(['data' => $photo]);
+
+        if ($data['photo'] ?? false) {
+
+            $post->photo()->create(['data' => $data['photo']]);
         }
         return Redirect::to('/post/' . $post->id . '/edit');
     }
