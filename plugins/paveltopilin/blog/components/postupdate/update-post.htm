@@ -1,10 +1,8 @@
 <div class="container w-50">
     <div class="row d-flex justify-content-center">
-        <form class="d-grid" data-request="onUpdatePost" data-request-validate data-request-flash data-request-files>
-            <div class="alert alert-danger" data-validate-for="title"></div>
+        <form class="d-grid" data-request="onUpdatePost" data-request-validation data-request-flash data-request-files>
             <label for="title">{{ 'Title'|_ }}</label>
             <input id="title" class="" type="text" name="title" value="{{ post.title }}"/>
-            <div class="alert alert-danger" data-validate-for="text"></div>
             <input type="hidden" name="post_id" value="{{ post.id }}">
             <label for="text">{{ 'Text'|_ }}</label>
             <textarea id="text" class="" type="text" name="text" >{{ post.text }}</textarea>

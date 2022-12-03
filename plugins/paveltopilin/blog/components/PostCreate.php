@@ -58,6 +58,7 @@ class PostCreate extends ComponentBase
 
             $post->photo()->create(['data' => $data['photo']]);
         }
+        Flash::success('Jobs done!');
         return Redirect::to('/post/' . $post->id . '/edit');
     }
 }

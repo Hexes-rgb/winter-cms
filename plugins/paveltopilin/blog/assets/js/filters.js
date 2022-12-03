@@ -238,8 +238,8 @@ function changeFilterMenuVisibility(){
 }
 
 function setFiltersDesc(){
-    authorsCount = (filters.authors.length === 0) ? 'all' : filters.authors.length;
-    tagsCount = (filters.tags.length === 0) ? 'all' : filters.tags.length;
+    authorsCount = (filters.authors.length === 0) ? 'none' : (filters.authors.length === $('.author').length) ? 'all' : filters.authors.length;
+    tagsCount = (filters.tags.length === 0) ? 'none' : (filters.tags.length === $('.tag').length) ? 'all' : filters.tags.length;
     createdAtDesc = ''.concat(
         ( filters.afterCreated === '' ) ? '∞' : filters.afterCreated, ' -> ',
         ( filters.beforeCreated === '' ) ? '∞' : filters.beforeCreated
